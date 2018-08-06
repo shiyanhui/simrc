@@ -119,8 +119,6 @@ filetype plugin indent on
 " Key Maps
 nnoremap <Leader>w <Esc>:w<CR>
 nnoremap <Leader>q <Esc>:q<CR>
-inoremap <Leader>w <Esc>:w<CR>
-inoremap <Leader>q <Esc>:q<CR>
 
 inoremap <C-a> <Esc><S-i>
 nnoremap <C-a> <Esc><S-i>
@@ -212,6 +210,7 @@ Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'Raimondi/delimitMate'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'majutsushi/tagbar'
 
 " Display
 Plug 'altercation/vim-colors-solarized'
@@ -254,7 +253,6 @@ function! FzfConfig()
     nnoremap <Leader>f :Files<CR>
     nnoremap <Leader>b :Buffers<CR>
     nnoremap <Leader>ag :Ag<CR>
-    nnoremap <Leader>t :Tags<CR>
 
     let g:fzf_history_dir = '~/.local/share/fzf-history'
     let g:fzf_layout = { 'down': '~40%' }
@@ -301,6 +299,10 @@ endfunction
 
 function! TrailingWhiteSpaceConfig()
     nnoremap <Leader><Space> :FixWhitespace<CR>
+endfunction
+
+function! TagbarConfig()
+    nnoremap <Leader>t :TagbarToggle<CR>
 endfunction
 
 function! SolarizedConfig()
@@ -379,6 +381,7 @@ call NERDCommenterConfig()
 call EasyMotionConfig()
 call DelimitMateConfig()
 call TrailingWhiteSpaceConfig()
+call TagbarConfig()
 call SolarizedConfig()
 call AirlineConfig()
 call NERDTreeConfig()
