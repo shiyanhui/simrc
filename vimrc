@@ -286,10 +286,10 @@ endfunction
 function! EasyMotionConfig()
     let g:EasyMotion_smartcase = 1
 
-    nmap <Leader>h <Plug>(easymotion-linebackward)
-    nmap <Leader>j <Plug>(easymotion-j)
-    nmap <Leader>k <Plug>(easymotion-k)
-    nmap <Leader>l <Plug>(easymotion-lineforward)
+    map <Leader>h <Plug>(easymotion-linebackward)
+    map <Leader>j <Plug>(easymotion-j)
+    map <Leader>k <Plug>(easymotion-k)
+    map <Leader>l <Plug>(easymotion-lineforward)
 endfunction
 
 function! DelimitMateConfig()
