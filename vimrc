@@ -184,9 +184,14 @@ function! RestoreCursor()
     endif
 endfunction
 
-augroup restoreCursor
+augroup restore_cursor
     autocmd!
     autocmd BufWinEnter * call RestoreCursor()
+augroup END
+
+augroup set_tab_2
+    autocmd!
+    autocmd FileType yaml,toml,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2
 augroup END
 
 "-------------------------------------------------------------
