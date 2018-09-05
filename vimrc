@@ -105,14 +105,17 @@ set loadplugins
 set viminfo='64,\"128,:64,%,n~/.viminfo
 
 " terms options
+set t_vb=
 set t_ti=
 set t_te=
 set ffs=unix,dos,mac
+set visualbell
 set scrolljump=5
 
 " gui options
 set guifont=Hasklig:h14
 set guioptions=
+set guicursor+=a:blinkon0
 
 "-------------------------------------------------------------
 " KeyMaps
