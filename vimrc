@@ -110,6 +110,10 @@ set t_te=
 set ffs=unix,dos,mac
 set scrolljump=5
 
+" gui options
+set guifont=Hasklig:h14
+set guioptions=
+
 "-------------------------------------------------------------
 " KeyMaps
 "-------------------------------------------------------------
