@@ -19,9 +19,7 @@ set smartcase
 set scrolloff=8
 set sidescrolloff=10
 set fillchars=
-" set lazyredraw
 set number
-set relativenumber
 set nowrap
 
 " 5 syntax, highlighting and spelling
