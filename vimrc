@@ -87,8 +87,7 @@ set noswapfile
 
 " 20 command line editing
 set history=1024
-set wildignore=*.o,*.obj,*.swp,*.pyc,*.bak,*.tmp
-set wildmenu
+set wildignore=*.o,*.obj,*.swp,*.pyc,*.bak,*.tmp set wildmenu
 
 " 21 executing external commands
 " 22 running make and jumping to errors
@@ -230,7 +229,7 @@ Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs' | Plug 'Xuyuanp/nerd
 Plug 'kien/rainbow_parentheses.vim'
 
 " Languages
-Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries'}
+Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries'}
 Plug 'shiyanhui/vim-slash'
 
 call plug#end()
