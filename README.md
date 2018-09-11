@@ -29,6 +29,12 @@ let mapleader = ','     " mapleader
 <Leader>/               " unhighlight
 ```
 
+## Uninstall
+
+```shell
+rm -rf ~/.vimrc ~/.vim
+```
+
 ## License
 
 NO LICENSE. Do what you want with it :)
