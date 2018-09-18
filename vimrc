@@ -214,7 +214,7 @@ call plug#begin('~/.vim/bundle')
 
 " Efficiency
 Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py'}
+Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer'}
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
@@ -230,7 +230,7 @@ Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs' | Plug 'Xuyuanp/nerd
 Plug 'kien/rainbow_parentheses.vim'
 
 " Languages
-Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries'}
+Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries'}
 Plug 'shiyanhui/vim-slash'
 
 call plug#end()
