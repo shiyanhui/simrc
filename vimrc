@@ -197,7 +197,7 @@ augroup END
 
 augroup set_tab_2
     autocmd!
-    autocmd FileType markdown,yaml,toml,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2
+    autocmd FileType markdown,yaml,toml,javascript,typescript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2
 augroup END
 
 "-------------------------------------------------------------
@@ -256,6 +256,17 @@ function! YouCompleteMeConfig()
     let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_autoclose_preview_window_after_insertion = 1
     let g:ycm_seed_identifiers_with_syntax = 1
+
+    let g:ycm_semantic_triggers =  {
+    \   'c' : ['->', '.'],
+    \   'objc' : ['->', '.'],
+    \   'cpp,objcpp' : ['->', '.', '::'],
+    \   'perl' : ['->'],
+    \   'php' : ['->', '::'],
+    \   'cs,java,javascript,d,vim,ruby,python,perl6,scala,vb,elixir,go' : ['.'],
+    \   'lua' : ['.', ':'],
+    \   'erlang' : [':'],
+    \ }
 
     nnoremap <Leader>gd :YcmCompleter GoToDeclaration<CR>
 endfunction
