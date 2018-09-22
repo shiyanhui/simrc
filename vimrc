@@ -256,6 +256,7 @@ function! YouCompleteMeConfig()
     let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_autoclose_preview_window_after_insertion = 1
     let g:ycm_seed_identifiers_with_syntax = 1
+    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
     let g:ycm_semantic_triggers =  {
     \   'c' : ['->', '.'],
