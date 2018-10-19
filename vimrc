@@ -395,6 +395,7 @@ function! VimGoConfig()
     let g:go_highlight_format_strings = 1
     let g:go_fmt_fail_silently = 1
     let g:go_fmt_command = "goimports"
+    let g:go_fmt_autosave = 0
 
     filetype detect
 endfunction
