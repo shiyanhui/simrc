@@ -232,6 +232,7 @@ Plug 'kien/rainbow_parentheses.vim'
 " Languages
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries'}
 Plug 'google/yapf', {'rtp': 'plugins/vim', 'for': 'python'}
+Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 Plug 'shiyanhui/vim-slash'
 
 call plug#end()
