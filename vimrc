@@ -231,7 +231,6 @@ Plug 'kien/rainbow_parentheses.vim'
 
 " Languages
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries'}
-Plug 'mdempsky/gocode', {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
 Plug 'google/yapf', {'rtp': 'plugins/vim', 'for': 'python'}
 Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 Plug 'shiyanhui/vim-slash'
@@ -349,7 +348,7 @@ endfunction
 
 function! NERDTreeConfig()
     nnoremap <Leader><Tab> :NERDTreeToggle<CR>
-    let g:NERDTreeIgnore = []
+    let g:NERDTreeIgnore = ['.pyc$']
     let g:NERDTreeCascadeSingleChildDir = 0
     let g:NERDTreeSortHiddenFirst = 1
     let g:NERDTreeAutoDeleteBuffer = 1
@@ -399,6 +398,8 @@ function! VimGoConfig()
     let g:go_fmt_fail_silently = 1
     let g:go_fmt_command = "goimports"
     let g:go_fmt_autosave = 0
+    let g:go_gocode_unimported_packages = 1
+    let g:go_gocode_propose_source = 1
 
     filetype detect
 endfunction
