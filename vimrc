@@ -29,9 +29,9 @@ set hlsearch
 set nocursorline
 
 if has("termguicolors")
+    set termguicolors
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
 endif
 
 " 6 multiple windows
@@ -230,7 +230,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'majutsushi/tagbar'
 
 " Display
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'kien/rainbow_parentheses.vim'
@@ -338,9 +338,9 @@ function! TagbarConfig()
 endfunction
 
 function! SolarizedConfig()
-    silent! colorscheme solarized
-    let g:solarized_contrast = "normal"
-    let g:solarized_visibility = "normal"
+    silent! colorscheme solarized8
+    let g:solarized_visibility = 'normal'
+    let g:solarized_diffmode = 'normal'
 
     highlight LineNr ctermbg=NONE guibg=NONE
     highlight SignColumn ctermbg=NONE guibg=NONE
