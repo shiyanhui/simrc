@@ -121,6 +121,11 @@ set guifont=Hasklig:h14
 set guioptions=
 set guicursor+=a:blinkon0
 
+" change cursor shapes in different modes
+let &t_SI.="\e[6 q"
+let &t_SR.="\e[2 q"
+let &t_EI.="\e[2 q"
+
 "-------------------------------------------------------------
 " KeyMaps
 "-------------------------------------------------------------
@@ -231,7 +236,7 @@ Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
-Plug 'Raimondi/delimitMate'
+Plug 'shiyanhui/delimitMate'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'majutsushi/tagbar'
 
