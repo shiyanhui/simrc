@@ -189,6 +189,12 @@ augroup highlight_overlength
     autocmd BufEnter,BufWrite,TextChanged,TextChangedI,InsertEnter,InsertLeave * match OverLength /\%<81v.\%>80v/
 augroup END
 
+augroup toggle_cursorline
+    autocmd!
+    autocmd InsertEnter * set cursorline
+    autocmd InsertLeave * set nocursorline
+augroup END
+
 function! RestoreCursor()
     if line("'\"") <= line("$")
         normal! g`"
@@ -266,7 +272,7 @@ function! YouCompleteMeConfig()
     let g:ycm_seed_identifiers_with_syntax = 1
     let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
-    let g:ycm_semantic_triggers =  {
+    let g:ycm_semantic_triggers = {
     \   'c' : ['->', '.'],
     \   'objc' : ['->', '.'],
     \   'cpp,objcpp' : ['->', '.', '::'],
