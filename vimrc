@@ -214,7 +214,7 @@ augroup END
 
 augroup set_tab_2
     autocmd!
-    autocmd FileType markdown,yaml,toml,javascript,typescript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2
+    autocmd FileType c,cpp,markdown,yaml,toml,javascript,typescript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2
 augroup END
 
 "-------------------------------------------------------------
@@ -248,9 +248,9 @@ Plug 'kien/rainbow_parentheses.vim'
 
 " Languages
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries'}
-Plug 'google/yapf', {'rtp': 'plugins/vim', 'for': 'python'}
 Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 Plug 'shiyanhui/vim-slash'
+Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
 
@@ -420,6 +420,13 @@ function! VimGoConfig()
     filetype detect
 endfunction
 
+function! AutoFormat()
+    let g:formatdef_custom_c='"clang-format -style=google"'
+    let g:formatters_c = ['custom_c']
+    let g:formatters_golang = ['goimports']
+    let g:formatter_yapf_style = 'pep8'
+endfunction
+
 call AleConfig()
 call YouCompleteMeConfig()
 call FzfConfig()
@@ -433,3 +440,4 @@ call AirlineConfig()
 call NERDTreeConfig()
 call RainbowParenthesesConfig()
 call VimGoConfig()
+call AutoFormat()
