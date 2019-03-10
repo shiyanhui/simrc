@@ -21,6 +21,7 @@ set sidescrolloff=10
 set fillchars=vert:│,fold:·
 set number
 set nowrap
+set numberwidth=1
 
 " 5 syntax, highlighting and spelling
 syntax on
@@ -358,7 +359,7 @@ function! SolarizedConfig()
     highlight LineNr ctermbg=NONE guibg=NONE
     highlight SignColumn ctermbg=NONE guibg=NONE
     highlight FoldColumn ctermbg=NONE guibg=NONE
-    highlight VertSplit ctermbg=NONE guibg=NONE guifg=#586e75
+    highlight VertSplit ctermbg=NONE guibg=NONE
 endfunction
 
 function! AirlineConfig()
