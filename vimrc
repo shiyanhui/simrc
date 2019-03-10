@@ -18,7 +18,7 @@ set smartcase
 " 4 displaying text
 set scrolloff=8
 set sidescrolloff=10
-set fillchars=
+set fillchars=vert:│,fold:·
 set number
 set nowrap
 
@@ -76,6 +76,8 @@ set autoindent
 set smartindent
 
 " 15 folding
+set foldcolumn=1
+
 " 16 diff mode
 " 17 mapping
 
@@ -355,6 +357,8 @@ function! SolarizedConfig()
 
     highlight LineNr ctermbg=NONE guibg=NONE
     highlight SignColumn ctermbg=NONE guibg=NONE
+    highlight FoldColumn ctermbg=NONE guibg=NONE
+    highlight VertSplit ctermbg=NONE guibg=NONE
 endfunction
 
 function! AirlineConfig()
