@@ -169,17 +169,14 @@ nnoremap L $
 nnoremap U <C-r>
 nnoremap <Leader>/ :nohls<CR>
 
-function! BufferCount() abort
-    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-endfunction
-
+let g:location_list_window_open = 0
 function! LocationListWindonwToggle() abort
-    let buffer_count_before = BufferCount()
-    silent! lclose
-    silent! lclose
-
-    if BufferCount() == buffer_count_before
-        execute "silent! lopen"
+    if g:location_list_window_open == 0
+        silent! lopen
+        let g:location_list_window_open = 1
+    else
+        silent! lclose
+        let g:location_list_window_open = 0
     endif
 endfunction
 
@@ -264,6 +261,11 @@ function! AleConfig()
     \}
     let g:ale_lint_on_text_changed = 'never'
     let g:ale_lint_on_enter = 0
+    let g:ale_sign_error = '>>'
+    let g:ale_sign_warning = '--'
+    let g:ale_echo_msg_error_str = 'Error'
+    let g:ale_echo_msg_warning_str = 'Warn'
+    let g:ale_echo_msg_format = '[%linter% %severity%] %s'
     let g:ale_c_clang_options = "std=c11 -Wno-everything"
     let g:ale_cpp_clang_options = "-std=c++14 -Wno-everything"
 
@@ -348,7 +350,7 @@ function! TrailingWhiteSpaceConfig()
 endfunction
 
 function! TagbarConfig()
-    nnoremap <Leader>t :TagbarToggle<CR>
+    nnoremap <Leader>tt :TagbarToggle<CR>
 endfunction
 
 function! SolarizedConfig()
@@ -426,7 +428,7 @@ function! VimGoConfig()
 endfunction
 
 function! AutoFormat()
-    let g:formatdef_custom_c='"clang-format -style=google"'
+    let g:formatdef_custom_c = '"clang-format -style=google"'
     let g:formatters_c = ['custom_c']
     let g:formatters_golang = ['goimports']
     let g:formatter_yapf_style = 'pep8'
