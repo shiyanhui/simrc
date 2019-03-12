@@ -190,7 +190,7 @@ nnoremap <Leader>kk :lpre<CR>
 
 augroup highlight_overlength
     autocmd!
-    autocmd BufEnter * highlight OverLength ctermbg=15
+    autocmd BufEnter * highlight OverLength ctermbg=15 guibg=#ffffff
     autocmd BufEnter,BufWrite,TextChanged,TextChangedI,InsertEnter,InsertLeave * match OverLength /\%<81v.\%>80v/
 augroup END
 
