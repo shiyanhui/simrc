@@ -449,3 +449,13 @@ call NERDTreeConfig()
 call RainbowParenthesesConfig()
 call VimGoConfig()
 call AutoFormat()
+
+"-------------------------------------------------------------
+" Customized
+"-------------------------------------------------------------
+
+" You can customize your setttings in ~/.vimrc.local
+let $localrc = $HOME.'/.vimrc.local'
+if filereadable($localrc)
+    source $localrc
+endif
