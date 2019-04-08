@@ -194,12 +194,6 @@ augroup highlight_overlength
     autocmd BufEnter,BufWrite,TextChanged,TextChangedI,InsertEnter,InsertLeave * match OverLength /\%<81v.\%>80v/
 augroup END
 
-augroup toggle_cursorline
-    autocmd!
-    autocmd InsertEnter * set cursorline
-    autocmd InsertLeave * set nocursorline
-augroup END
-
 function! RestoreCursor()
     if line("'\"") <= line("$")
         normal! g`"
@@ -214,7 +208,7 @@ augroup END
 
 augroup set_tab_2
     autocmd!
-    autocmd FileType cpp,markdown,yaml,toml,javascript,typescript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2
+    autocmd FileType markdown,yaml,toml,javascript,typescript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2
 augroup END
 
 "-------------------------------------------------------------
