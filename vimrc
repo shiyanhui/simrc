@@ -12,6 +12,7 @@ set incsearch
 set magic
 set ignorecase
 set smartcase
+set regexpengine=1
 
 " 3 tags
 
@@ -22,12 +23,14 @@ set fillchars=vert:│,fold:·
 set number
 set nowrap
 set numberwidth=1
+set lazyredraw
 
 " 5 syntax, highlighting and spelling
 syntax on
 set background=dark
 set hlsearch
 set nocursorline
+set nocursorcolumn
 
 if has("termguicolors")
     set termguicolors
