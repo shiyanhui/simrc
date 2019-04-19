@@ -227,8 +227,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " Efficiency
-Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer'}
+Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -236,18 +235,18 @@ Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'shiyanhui/delimitMate'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'majutsushi/tagbar'
 
 " Display
+Plug 'w0rp/ale'
+Plug 'majutsushi/tagbar'
 Plug 'lifepillar/vim-solarized8'
 Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'kien/rainbow_parentheses.vim'
 
 " Languages
-Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries'}
 Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
-Plug 'shiyanhui/vim-slash'
+Plug 'shiyanhui/vim-slash', {'for': 'cpp'}
 Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
@@ -291,7 +290,8 @@ function! YouCompleteMeConfig()
     \   'erlang' : [':'],
     \ }
 
-    nnoremap <Leader>gd :YcmCompleter GoToDeclaration<CR>
+    nnoremap gd :YcmCompleter GoToDeclaration<CR>
+    nnoremap <C-t> <C-o>
 endfunction
 
 function! FzfConfig()
@@ -407,24 +407,6 @@ function! RainbowParenthesesConfig()
     augroup END
 endfunction
 
-function! VimGoConfig()
-    let g:go_highlight_extra_types = 1
-    let g:go_highlight_operators = 1
-    let g:go_highlight_functions = 1
-    let g:go_highlight_function_arguments = 1
-    let g:go_highlight_function_calls = 1
-    let g:go_highlight_types = 1
-    let g:go_highlight_fields = 1
-    let g:go_highlight_build_constraints = 1
-    let g:go_highlight_generate_tags = 1
-    let g:go_highlight_format_strings = 1
-    let g:go_fmt_fail_silently = 1
-    let g:go_fmt_command = "goimports"
-    let g:go_fmt_autosave = 0
-
-    filetype detect
-endfunction
-
 function! AutoFormat()
     let g:formatdef_custom_c = '"clang-format -style=google"'
     let g:formatters_c = ['custom_c']
@@ -444,7 +426,6 @@ call SolarizedConfig()
 call AirlineConfig()
 call NERDTreeConfig()
 call RainbowParenthesesConfig()
-call VimGoConfig()
 call AutoFormat()
 
 "-------------------------------------------------------------
