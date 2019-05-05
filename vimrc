@@ -375,6 +375,7 @@ function! AirlineConfig()
     let g:airline_solarized_bg = 'dark'
     let g:airline_theme = 'solarized'
     let g:airline_skip_empty_sections = 1
+    let g:airline#extensions#branch#vcs_checks = ['untracked']
 endfunction
 
 function! NERDTreeConfig()
