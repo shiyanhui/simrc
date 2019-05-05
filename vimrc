@@ -27,7 +27,6 @@ set lazyredraw
 
 " 5 syntax, highlighting and spelling
 syntax on
-syntax match goSpaceError display excludenl "\s\+$"
 set background=dark
 set hlsearch
 set nocursorline
@@ -132,6 +131,12 @@ set guicursor+=a:blinkon0
 let &t_SI.="\e[6 q"
 let &t_SR.="\e[2 q"
 let &t_EI.="\e[2 q"
+
+"-------------------------------------------------------------
+" Syntax
+"-------------------------------------------------------------
+
+let g:go_highlight_trailing_whitespace_error = 0
 
 "-------------------------------------------------------------
 " KeyMaps
