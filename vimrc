@@ -27,6 +27,7 @@ set lazyredraw
 
 " 5 syntax, highlighting and spelling
 syntax on
+syntax match goSpaceError display excludenl "\s\+$"
 set background=dark
 set hlsearch
 set nocursorline
@@ -233,8 +234,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'shiyanhui/delimitMate'
-Plug 'bronson/vim-trailing-whitespace'
 
 " Display
 Plug 'w0rp/ale'
@@ -344,8 +345,9 @@ function! DelimitMateConfig()
     let g:delimitMate_expand_space = 1
 endfunction
 
-function! TrailingWhiteSpaceConfig()
-    nnoremap <Leader><Space> :FixWhitespace<CR>
+function! BetterWhiteSpaceConfig()
+    let g:current_line_whitespace_disabled_soft = 1
+    nnoremap <Leader><Space> :StripWhitespace!<CR>
 endfunction
 
 function! TagbarConfig()
@@ -421,7 +423,7 @@ call FzfConfig()
 call NERDCommenterConfig()
 call EasyMotionConfig()
 call DelimitMateConfig()
-call TrailingWhiteSpaceConfig()
+call BetterWhiteSpaceConfig()
 call TagbarConfig()
 call SolarizedConfig()
 call AirlineConfig()
