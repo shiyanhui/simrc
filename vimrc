@@ -333,7 +333,6 @@ function! NERDCommenterConfig()
     let g:NERDTrimTrailingWhitespace = 1
     let g:NERDToggleCheckAllLines = 1
     let g:NERDCommentEmptyLines = 1
-    let g:NERDDefaultAlign = 'start'
 endfunction
 
 function! EasyMotionConfig()
