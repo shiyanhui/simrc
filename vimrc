@@ -224,6 +224,13 @@ augroup END
 " Plugins
 "-------------------------------------------------------------
 
+function! LoadFile(path)
+    let $path = a:path
+    if filereadable($path)
+        source $path
+    endif
+endfunction
+
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -254,6 +261,9 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 Plug 'shiyanhui/vim-slash', {'for': 'cpp'}
 Plug 'Chiel92/vim-autoformat'
+
+" load extra plugins
+call LoadFile($HOME.'/.vimrc.plugs')
 
 call plug#end()
 
@@ -441,7 +451,4 @@ call AutoFormat()
 "-------------------------------------------------------------
 
 " You can customize your setttings in ~/.vimrc.local
-let $localrc = $HOME.'/.vimrc.local'
-if filereadable($localrc)
-    source $localrc
-endif
+call LoadFile($HOME.'/.vimrc.local')
