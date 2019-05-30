@@ -244,46 +244,29 @@ Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './i
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'Chiel92/vim-autoformat'
+Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
+Plug 'junegunn/vim-easy-align'
 Plug 'shiyanhui/delimitMate'
 
 " Display
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'lifepillar/vim-solarized8'
-Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs' | Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
 " Languages
 Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 Plug 'shiyanhui/vim-slash', {'for': 'cpp'}
-Plug 'Chiel92/vim-autoformat'
 
 " load extra plugins
 call LoadFile($HOME.'/.vimrc.plugs')
 
 call plug#end()
-
-function! AleConfig()
-    let g:ale_linters = {
-    \   'go': ['gofmt', 'go build'],
-    \   'c': ['clang'],
-    \}
-    let g:ale_lint_on_text_changed = 'never'
-    let g:ale_lint_on_enter = 0
-    let g:ale_sign_error = '>>'
-    let g:ale_sign_warning = '--'
-    let g:ale_echo_msg_error_str = 'Error'
-    let g:ale_echo_msg_warning_str = 'Warn'
-    let g:ale_echo_msg_format = '[%linter% %severity%] %s'
-    let g:ale_c_clang_options = "std=c11 -Wno-everything"
-    let g:ale_cpp_clang_options = "-std=c++14 -Wno-everything"
-
-    nnoremap <Leader>ta :ALEToggle<CR>
-endfunction
 
 function! YouCompleteMeConfig()
     let g:ycm_complete_in_comments = 1
@@ -354,14 +337,44 @@ function! EasyMotionConfig()
     map <Leader>l <Plug>(easymotion-lineforward)
 endfunction
 
+function! BetterWhiteSpaceConfig()
+    let g:current_line_whitespace_disabled_soft = 1
+    nnoremap <Leader><Space> :StripWhitespace!<CR>
+endfunction
+
+function! AutoFormat()
+    let g:formatdef_custom_c = '"clang-format -style=google"'
+    let g:formatters_c = ['custom_c']
+    let g:formatters_golang = ['goimports']
+    let g:formatter_yapf_style = 'pep8'
+endfunction
+
+function EasyAlignConfig()
+    xmap ga <Plug>(EasyAlign)
+    nmap ga <Plug>(EasyAlign)
+endfunction
+
 function! DelimitMateConfig()
     let g:delimitMate_expand_cr = 1
     let g:delimitMate_expand_space = 1
 endfunction
 
-function! BetterWhiteSpaceConfig()
-    let g:current_line_whitespace_disabled_soft = 1
-    nnoremap <Leader><Space> :StripWhitespace!<CR>
+function! AleConfig()
+    let g:ale_linters = {
+    \   'go': ['gofmt', 'go build'],
+    \   'c': ['clang'],
+    \}
+    let g:ale_lint_on_text_changed = 'never'
+    let g:ale_lint_on_enter = 0
+    let g:ale_sign_error = '>>'
+    let g:ale_sign_warning = '--'
+    let g:ale_echo_msg_error_str = 'Error'
+    let g:ale_echo_msg_warning_str = 'Warn'
+    let g:ale_echo_msg_format = '[%linter% %severity%] %s'
+    let g:ale_c_clang_options = "std=c11 -Wno-everything"
+    let g:ale_cpp_clang_options = "-std=c++14 -Wno-everything"
+
+    nnoremap <Leader>ta :ALEToggle<CR>
 endfunction
 
 function! TagbarConfig()
@@ -379,42 +392,26 @@ function! SolarizedConfig()
     highlight VertSplit ctermbg=NONE guibg=NONE
 endfunction
 
-function! AirlineConfig()
-    let g:airline_powerline_fonts = 1
-    let g:airline_solarized_bg = 'dark'
-    let g:airline_theme = 'solarized'
-    let g:airline_skip_empty_sections = 1
-    let g:airline#extensions#branch#vcs_checks = ['untracked']
-endfunction
-
-function! NERDTreeConfig()
-    nnoremap <Leader><Tab> :NERDTreeToggle<CR>
-    let g:NERDTreeIgnore = ['.pyc$']
-    let g:NERDTreeCascadeSingleChildDir = 0
-    let g:NERDTreeSortHiddenFirst = 1
-    let g:NERDTreeAutoDeleteBuffer = 1
-endfunction
-
 function! RainbowParenthesesConfig()
     let g:rbpt_max = 16
     let g:rbpt_loadcmd_toggle = 0
     let g:rbpt_colorpairs = [
-        \ ['brown',       'RoyalBlue3'],
-        \ ['Darkblue',    'SeaGreen3'],
-        \ ['darkgray',    'DarkOrchid3'],
-        \ ['darkgreen',   'firebrick3'],
-        \ ['darkcyan',    'RoyalBlue3'],
-        \ ['darkred',     'SeaGreen3'],
-        \ ['darkmagenta', 'DarkOrchid3'],
-        \ ['brown',       'firebrick3'],
-        \ ['gray',        'RoyalBlue3'],
-        \ ['darkmagenta', 'DarkOrchid3'],
-        \ ['Darkblue',    'firebrick3'],
-        \ ['darkgreen',   'RoyalBlue3'],
-        \ ['darkcyan',    'SeaGreen3'],
-        \ ['darkred',     'DarkOrchid3'],
-        \ ['red',         'firebrick3'],
-        \ ]
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
 
     augroup rainbow_parentheses
         autocmd!
@@ -425,26 +422,36 @@ function! RainbowParenthesesConfig()
     augroup END
 endfunction
 
-function! AutoFormat()
-    let g:formatdef_custom_c = '"clang-format -style=google"'
-    let g:formatters_c = ['custom_c']
-    let g:formatters_golang = ['goimports']
-    let g:formatter_yapf_style = 'pep8'
+function! NERDTreeConfig()
+    nnoremap <Leader><Tab> :NERDTreeToggle<CR>
+    let g:NERDTreeIgnore = ['.pyc$']
+    let g:NERDTreeCascadeSingleChildDir = 0
+    let g:NERDTreeSortHiddenFirst = 1
+    let g:NERDTreeAutoDeleteBuffer = 1
 endfunction
 
-call AleConfig()
+function! AirlineConfig()
+    let g:airline_powerline_fonts = 1
+    let g:airline_solarized_bg = 'dark'
+    let g:airline_theme = 'solarized'
+    let g:airline_skip_empty_sections = 1
+    let g:airline#extensions#branch#vcs_checks = ['untracked']
+endfunction
+
 call YouCompleteMeConfig()
 call FzfConfig()
 call NERDCommenterConfig()
 call EasyMotionConfig()
-call DelimitMateConfig()
 call BetterWhiteSpaceConfig()
+call AutoFormat()
+call EasyAlignConfig()
+call DelimitMateConfig()
+call AleConfig()
 call TagbarConfig()
 call SolarizedConfig()
-call AirlineConfig()
-call NERDTreeConfig()
 call RainbowParenthesesConfig()
-call AutoFormat()
+call NERDTreeConfig()
+call AirlineConfig()
 
 "-------------------------------------------------------------
 " Customized
