@@ -350,8 +350,8 @@ function! AutoFormat()
 endfunction
 
 function EasyAlignConfig()
-    xmap ga <Plug>(EasyAlign)
-    nmap ga <Plug>(EasyAlign)
+    xmap <leader>a <Plug>(EasyAlign)
+    nmap <leader>a <Plug>(EasyAlign)
 endfunction
 
 function! DelimitMateConfig()
