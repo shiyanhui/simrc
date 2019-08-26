@@ -217,7 +217,7 @@ augroup END
 
 augroup set_tab_2
     autocmd!
-    autocmd FileType markdown,yaml,toml,javascript,typescript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2
+    autocmd FileType h,c,hpp,cpp,cc,markdown,yaml,toml,javascript,typescript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2
 augroup END
 
 "-------------------------------------------------------------
