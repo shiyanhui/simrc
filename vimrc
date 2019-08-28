@@ -424,7 +424,7 @@ endfunction
 
 function! NERDTreeConfig()
     nnoremap <Leader><Tab> :NERDTreeToggle<CR>
-    let g:NERDTreeIgnore = ['.pyc$']
+    let g:NERDTreeIgnore = ['\.pyc$', '\.o$', '\.so$', '\.a$']
     let g:NERDTreeCascadeSingleChildDir = 0
     let g:NERDTreeSortHiddenFirst = 1
     let g:NERDTreeAutoDeleteBuffer = 1
