@@ -362,7 +362,8 @@ endfunction
 function! AleConfig()
     let g:ale_linters = {
     \   'go': ['gofmt', 'go build'],
-    \   'c': ['clang'],
+    \   'c': ['gcc'],
+    \   'cpp': ['gcc'],
     \}
     let g:ale_lint_on_text_changed = 'never'
     let g:ale_lint_on_enter = 0
@@ -371,8 +372,10 @@ function! AleConfig()
     let g:ale_echo_msg_error_str = 'Error'
     let g:ale_echo_msg_warning_str = 'Warn'
     let g:ale_echo_msg_format = '[%linter% %severity%] %s'
-    let g:ale_c_clang_options = "std=c11 -Wno-everything"
+    let g:ale_c_clang_options = "-std=c11 -Wno-everything"
     let g:ale_cpp_clang_options = "-std=c++14 -Wno-everything"
+    let g:ale_c_gcc_options = "-std=c11 -I `gcc -print-file-name=plugin`/include"
+    let g:ale_cpp_gcc_options = "-std=c++14 -I `gcc -print-file-name=plugin`/include"
 
     nnoremap <Leader>ta :ALEToggle<CR>
 endfunction
