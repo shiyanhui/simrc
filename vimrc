@@ -133,12 +133,6 @@ let &t_SR.="\e[2 q"
 let &t_EI.="\e[2 q"
 
 "-------------------------------------------------------------
-" Syntax
-"-------------------------------------------------------------
-
-let g:go_highlight_trailing_whitespace_error = 0
-
-"-------------------------------------------------------------
 " KeyMaps
 "-------------------------------------------------------------
 
@@ -197,12 +191,6 @@ nnoremap <Leader>kk :lpre<CR>
 " Events
 "-------------------------------------------------------------
 
-augroup highlight_overlength
-    autocmd!
-    autocmd BufEnter * highlight OverLength ctermbg=15 guibg=#ffffff
-    autocmd BufEnter,BufWrite,TextChanged,TextChangedI,InsertEnter,InsertLeave * match OverLength /\%<81v.\%>80v/
-augroup END
-
 function! RestoreCursor()
     if line("'\"") <= line("$")
         normal! g`"
@@ -213,6 +201,17 @@ endfunction
 augroup restore_cursor
     autocmd!
     autocmd BufWinEnter * call RestoreCursor()
+augroup END
+
+augroup set_syntax
+    autocmd!
+    autocmd BufNewFile,BufRead *.h,*.c setfiletype c
+augroup END
+
+augroup highlight_overlength
+    autocmd!
+    autocmd BufEnter * highlight OverLength ctermbg=15 guibg=#ffffff
+    autocmd BufEnter,BufWrite,TextChanged,TextChangedI,InsertEnter,InsertLeave * match OverLength /\%<81v.\%>80v/
 augroup END
 
 augroup set_tab_2
