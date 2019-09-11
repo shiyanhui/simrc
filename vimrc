@@ -260,7 +260,7 @@ Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/v
 
 " Languages
 Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
-Plug 'shiyanhui/vim-slash', {'for': 'cpp'}
+Plug 'shiyanhui/vim-slash', {'for': ['c', 'cpp']}
 
 " load extra plugins
 call LoadFile($HOME.'/.vimrc.plugs')
