@@ -339,6 +339,7 @@ function! EasyMotionConfig()
 endfunction
 
 function! BetterWhiteSpaceConfig()
+    let g:go_highlight_trailing_whitespace_error = 0
     let g:current_line_whitespace_disabled_soft = 1
     nnoremap <Leader><Space> :StripWhitespace!<CR>
 endfunction
