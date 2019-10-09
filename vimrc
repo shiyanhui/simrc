@@ -70,10 +70,10 @@ set backspace=indent,eol,start
 set matchpairs=(:),{:},[:]
 
 " 14 tabs and indenting
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set smarttab
-set softtabstop=4
+set softtabstop=2
 set shiftround
 set expandtab
 set autoindent
@@ -212,11 +212,6 @@ augroup highlight_overlength
     autocmd!
     autocmd BufEnter * highlight OverLength ctermbg=15 guibg=#ffffff
     autocmd BufEnter,BufWrite,TextChanged,TextChangedI,InsertEnter,InsertLeave * match OverLength /\%<81v.\%>80v/
-augroup END
-
-augroup set_tab_2
-    autocmd!
-    autocmd FileType h,c,hpp,cpp,cc,markdown,yaml,toml,javascript,typescript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2
 augroup END
 
 "-------------------------------------------------------------
