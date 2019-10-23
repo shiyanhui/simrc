@@ -322,6 +322,8 @@ function! NERDCommenterConfig()
   let g:NERDTrimTrailingWhitespace = 1
   let g:NERDToggleCheckAllLines = 1
   let g:NERDCommentEmptyLines = 1
+  let g:NERDCompactSexyComs = 1
+  let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 endfunction
 
 function! EasyMotionConfig()
