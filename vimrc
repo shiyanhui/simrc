@@ -211,7 +211,7 @@ augroup END
 augroup highlight_overlength
   autocmd!
   autocmd BufEnter * highlight OverLength ctermbg=15 guibg=#ffffff
-  autocmd BufEnter,BufWrite,TextChanged,TextChangedI,InsertEnter,InsertLeave * match OverLength /\%<81v.\%>80v/
+  autocmd BufEnter,BufWrite,TextChanged,TextChangedI,InsertEnter,InsertLeave * match OverLength /\%<82v.\%>81v/
 augroup END
 
 "-------------------------------------------------------------
