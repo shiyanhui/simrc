@@ -243,7 +243,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
-Plug 'shiyanhui/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " Display
 Plug 'w0rp/ale'
