@@ -246,7 +246,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'Raimondi/delimitMate'
 
 " Display
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'majutsushi/tagbar'
 Plug 'lifepillar/vim-solarized8'
 Plug 'kien/rainbow_parentheses.vim'
