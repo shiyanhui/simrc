@@ -234,7 +234,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " Efficiency
-Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer'}
+Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer --rust-completer'}
 Plug 'junegunn/fzf', {'dir': '~/.vim/.fzf'}
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
