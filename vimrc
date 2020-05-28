@@ -234,7 +234,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " Efficiency
-Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer --rust-completer'}
+Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer --rust-completer', 'for': 'go'}
 Plug 'junegunn/fzf', {'dir': '~/.vim/.fzf'}
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -273,6 +273,7 @@ function! YouCompleteMeConfig()
   let g:ycm_enable_diagnostic_signs = 0
   let g:ycm_enable_diagnostic_highlighting = 0
   let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+  let g:ycm_auto_hover = ''
 
   let g:ycm_semantic_triggers = {
   \  'c' : ['->', '.'],
