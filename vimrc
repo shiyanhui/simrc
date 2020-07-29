@@ -243,7 +243,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 
 " Display
 Plug 'dense-analysis/ale'
@@ -354,11 +354,6 @@ function EasyAlignConfig()
   nmap <leader>a <Plug>(EasyAlign)
 endfunction
 
-function! DelimitMateConfig()
-  let g:delimitMate_expand_cr = 1
-  let g:delimitMate_expand_space = 1
-endfunction
-
 function! AleConfig()
   let g:ale_linters = {
   \  'go': ['gofmt', 'go build'],
@@ -449,7 +444,6 @@ call EasyMotionConfig()
 call BetterWhiteSpaceConfig()
 call AutoFormat()
 call EasyAlignConfig()
-call DelimitMateConfig()
 call AleConfig()
 call TagbarConfig()
 call SolarizedConfig()
