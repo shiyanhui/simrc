@@ -234,19 +234,19 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " Efficiency
-Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer --rust-completer', 'for': 'go'}
+Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer --rust-completer', 'for': ['c', 'cpp', 'go']}
 Plug 'junegunn/fzf', {'dir': '~/.vim/.fzf'}
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdcommenter', {'for': ['c', 'cpp', 'go']}
+Plug 'easymotion/vim-easymotion', {'for': ['c', 'cpp', 'go']}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
-Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs', {'for': ['c', 'cpp', 'go']}
 
 " Display
-Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale', {'for': ['c', 'cpp', 'go']}
 Plug 'majutsushi/tagbar'
 Plug 'lifepillar/vim-solarized8'
 Plug 'kien/rainbow_parentheses.vim'
