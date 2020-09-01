@@ -356,7 +356,7 @@ endfunction
 
 function! AleConfig()
   let g:ale_linters = {
-  \  'go': ['gofmt', 'go build'],
+  \  'go': ['gopls'],
   \  'c': ['gcc'],
   \  'cpp': ['gcc'],
   \}
