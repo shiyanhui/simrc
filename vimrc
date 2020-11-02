@@ -159,7 +159,9 @@ cnoremap <C-b> <Left>
 
 nnoremap <C-o> o
 inoremap <C-o> <Esc>o
-nnoremap <C-j> O
+
+"Conflict with fzf, so we disable it here.
+"nnoremap <C-j> O
 inoremap <C-j> <Esc>O
 
 vnoremap > >gv
@@ -235,7 +237,7 @@ call plug#begin('~/.vim/bundle')
 
 " Efficiency
 Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer --rust-completer', 'for': ['c', 'cpp', 'go']}
-Plug 'junegunn/fzf', {'dir': '~/.vim/.fzf'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter', {'for': ['c', 'cpp', 'go']}
 Plug 'easymotion/vim-easymotion', {'for': ['c', 'cpp', 'go']}
@@ -296,26 +298,10 @@ function! FzfConfig()
   nnoremap <Leader>ag :Ag<CR>
 
   let g:fzf_history_dir = '~/.local/share/fzf-history'
-  let g:fzf_layout = { 'down': '~40%' }
   let g:fzf_buffers_jump = 1
   let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
   let g:fzf_tags_command = 'ctags -R'
   let g:fzf_commands_expect = 'alt-enter,ctrl-x'
-
-  command! -bang -nargs=* Ag
-  \  call fzf#vim#ag(
-  \    <q-args>,
-  \    <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \    <bang>0)
-
-  command! -bang -nargs=* Rg
-  \  call fzf#vim#grep(
-  \    'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \    <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \    <bang>0)
-
-  command! -bang -nargs=? -complete=dir Files
-  \  call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 endfunction
 
 function! NERDCommenterConfig()
