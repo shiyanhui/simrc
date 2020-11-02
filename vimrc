@@ -236,16 +236,16 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " Efficiency
-Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer --rust-completer', 'for': ['c', 'cpp', 'go']}
+Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer', 'for': ['c', 'cpp', 'go']}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdcommenter', {'for': ['c', 'cpp', 'go']}
-Plug 'easymotion/vim-easymotion', {'for': ['c', 'cpp', 'go']}
+Plug 'scrooloose/nerdcommenter'
+Plug 'easymotion/vim-easymotion'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
-Plug 'jiangmiao/auto-pairs', {'for': ['c', 'cpp', 'go']}
+Plug 'jiangmiao/auto-pairs'
 
 " Display
 Plug 'dense-analysis/ale', {'for': ['c', 'cpp', 'go']}
