@@ -245,7 +245,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
-Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
 
 " Display
 Plug 'dense-analysis/ale', {'for': ['c', 'cpp', 'go']}
