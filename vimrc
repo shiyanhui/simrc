@@ -256,7 +256,6 @@ Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs' | Plug 'Xuyuanp/nerd
 Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
 " Languages
-Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 Plug 'shiyanhui/vim-slash', {'for': ['c', 'cpp']}
 
 " load extra plugins
@@ -328,7 +327,7 @@ function! BetterWhiteSpaceConfig()
   nnoremap <Leader><Space> :StripWhitespace!<CR>
 endfunction
 
-function! AutoFormat()
+function! AutoFormatConfig()
   let g:formatdef_custom_c = '"clang-format -style=google"'
   let g:formatters_c = ['custom_c']
   let g:formatters_golang = ['goimports']
@@ -338,6 +337,10 @@ endfunction
 function EasyAlignConfig()
   xmap <leader>a <Plug>(EasyAlign)
   nmap <leader>a <Plug>(EasyAlign)
+endfunction
+
+function DelimitMateConfig()
+  let g:delimitMate_expand_cr = 1
 endfunction
 
 function! AleConfig()
@@ -428,8 +431,9 @@ call FzfConfig()
 call NERDCommenterConfig()
 call EasyMotionConfig()
 call BetterWhiteSpaceConfig()
-call AutoFormat()
+call AutoFormatConfig()
 call EasyAlignConfig()
+call DelimitMateConfig()
 call AleConfig()
 call TagbarConfig()
 call SolarizedConfig()
