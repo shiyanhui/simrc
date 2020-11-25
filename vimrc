@@ -342,6 +342,11 @@ endfunction
 
 function DelimitMateConfig()
   let g:delimitMate_expand_cr = 1
+
+  augroup python_quotes
+    autocmd!
+    autocmd FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+  augroup END
 endfunction
 
 function! AleConfig()
