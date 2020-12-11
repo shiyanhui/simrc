@@ -257,6 +257,10 @@ Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/v
 
 " Languages
 Plug 'shiyanhui/vim-slash', {'for': ['c', 'cpp']}
+Plug 'ervandew/supertab', {'for': ['dart']}
+Plug 'dart-lang/dart-vim-plugin', {'for': ['dart']}
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart', {'for': ['dart']}
 
 " load extra plugins
 call LoadFile($HOME.'/.vimrc.plugs')
@@ -432,6 +436,19 @@ function! AirlineConfig()
   let g:airline#extensions#branch#vcs_checks = ['untracked']
 endfunction
 
+function! SuperTab()
+  let g:SuperTabMappingForward = '<s-tab>'
+  let g:SuperTabMappingBackward = '<tab>'
+endfunction
+
+function! VimLSC()
+  let g:lsc_auto_map = v:true
+  let g:lsc_enable_autocomplete = v:true
+  let g:lsc_server_commands = {'dart': 'dart_language_server'}
+  let g:lsc_autocomplete_length = 1
+  autocmd CompleteDone * silent! pclose
+endfunction
+
 call YouCompleteMeConfig()
 call FzfConfig()
 call NERDCommenterConfig()
@@ -446,6 +463,8 @@ call SolarizedConfig()
 call RainbowParenthesesConfig()
 call NERDTreeConfig()
 call AirlineConfig()
+call SuperTab()
+call VimLSC()
 
 "-------------------------------------------------------------
 " Customized
