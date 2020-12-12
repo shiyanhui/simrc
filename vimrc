@@ -87,7 +87,7 @@ set foldcolumn=1
 
 " 18 reading and writing files
 set write
-set writebackup
+set nowritebackup
 set nobackup
 set noautowrite
 set nowriteany
@@ -156,6 +156,8 @@ inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
+
+nnoremap <C-t> <C-o>
 
 nnoremap <C-o> o
 inoremap <C-o> <Esc>o
@@ -236,20 +238,18 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " Efficiency
-Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --go-completer', 'for': ['c', 'cpp', 'go']}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdcommenter'
+Plug 'Raimondi/delimitMate'
 Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdcommenter'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'junegunn/vim-easy-align'
 Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
-Plug 'junegunn/vim-easy-align'
-Plug 'Raimondi/delimitMate'
 
 " Display
-Plug 'dense-analysis/ale', {'for': ['c', 'cpp', 'go']}
-Plug 'majutsushi/tagbar'
 Plug 'lifepillar/vim-solarized8'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs' | Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -257,43 +257,40 @@ Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/v
 
 " Languages
 Plug 'shiyanhui/vim-slash', {'for': ['c', 'cpp']}
-Plug 'ervandew/supertab', {'for': ['dart']}
-Plug 'dart-lang/dart-vim-plugin', {'for': ['dart']}
-Plug 'natebosch/vim-lsc'
-Plug 'natebosch/vim-lsc-dart', {'for': ['dart']}
 
 " load extra plugins
 call LoadFile($HOME.'/.vimrc.plugs')
 
 call plug#end()
 
-function! YouCompleteMeConfig()
-  let g:ycm_complete_in_comments = 1
-  let g:ycm_collect_identifiers_from_comments_and_strings = 1
-  let g:ycm_collect_identifiers_from_tags_files = 1
-  let g:ycm_add_preview_to_completeopt = 1
-  let g:ycm_autoclose_preview_window_after_completion = 1
-  let g:ycm_autoclose_preview_window_after_insertion = 1
-  let g:ycm_seed_identifiers_with_syntax = 1
-  let g:ycm_enable_diagnostic_signs = 0
-  let g:ycm_enable_diagnostic_highlighting = 0
-  let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-  let g:ycm_auto_hover = ''
-  let g:ycm_max_num_candidates = 0
+function! CocConfig()
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
 
-  let g:ycm_semantic_triggers = {
-  \  'c' : ['->', '.'],
-  \  'objc' : ['->', '.'],
-  \  'cpp,objcpp' : ['->', '.', '::'],
-  \  'perl' : ['->'],
-  \  'php' : ['->', '::'],
-  \  'cs,java,javascript,d,vim,ruby,python,perl6,scala,vb,elixir,go' : ['.'],
-  \  'lua' : ['.', ':'],
-  \  'erlang' : [':'],
-  \ }
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+      call CocActionAsync('doHover')
+    else
+      execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
+  endfunction
 
-  nnoremap gd :YcmCompleter GoToDeclaration<CR>
-  nnoremap <C-t> <C-o>
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gr <Plug>(coc-references)
+
+  nnoremap <silent><nowait> <space>j :<C-u>CocNext<CR>
+  nnoremap <silent><nowait> <space>k :<C-u>CocPrev<CR>
+  nnoremap <silent><nowait> <space>a :<C-u>CocList diagnostics<cr>
+  nnoremap <silent><nowait> <space>c :<C-u>CocList commands<cr>
+
+  inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 endfunction
 
 function! FzfConfig()
@@ -308,13 +305,13 @@ function! FzfConfig()
   let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 endfunction
 
-function! NERDCommenterConfig()
-  let g:NERDSpaceDelims = 1
-  let g:NERDTrimTrailingWhitespace = 1
-  let g:NERDToggleCheckAllLines = 1
-  let g:NERDCommentEmptyLines = 1
-  let g:NERDCompactSexyComs = 1
-  let g:NERDCustomDelimiters = {'c': {'left': '/*', 'right': '*/'}, 'cpp': {'left': '/*', 'right': '*/'}}
+function! DelimitMateConfig()
+  let g:delimitMate_expand_cr = 1
+
+  augroup python_quotes
+    autocmd!
+    autocmd FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+  augroup END
 endfunction
 
 function! EasyMotionConfig()
@@ -326,10 +323,24 @@ function! EasyMotionConfig()
   map <Leader>l <Plug>(easymotion-lineforward)
 endfunction
 
+function! NERDCommenterConfig()
+  let g:NERDSpaceDelims = 1
+  let g:NERDTrimTrailingWhitespace = 1
+  let g:NERDToggleCheckAllLines = 1
+  let g:NERDCommentEmptyLines = 1
+  let g:NERDCompactSexyComs = 1
+  let g:NERDCustomDelimiters = {'c': {'left': '/*', 'right': '*/'}, 'cpp': {'left': '/*', 'right': '*/'}}
+endfunction
+
 function! BetterWhiteSpaceConfig()
   let g:go_highlight_trailing_whitespace_error = 0
   let g:current_line_whitespace_disabled_soft = 1
   nnoremap <Leader><Space> :StripWhitespace!<CR>
+endfunction
+
+function! EasyAlignConfig()
+  xmap <leader>a <Plug>(EasyAlign)
+  nmap <leader>a <Plug>(EasyAlign)
 endfunction
 
 function! AutoFormatConfig()
@@ -337,45 +348,6 @@ function! AutoFormatConfig()
   let g:formatters_c = ['custom_c']
   let g:formatters_golang = ['goimports']
   let g:formatter_yapf_style = 'pep8'
-endfunction
-
-function EasyAlignConfig()
-  xmap <leader>a <Plug>(EasyAlign)
-  nmap <leader>a <Plug>(EasyAlign)
-endfunction
-
-function DelimitMateConfig()
-  let g:delimitMate_expand_cr = 1
-
-  augroup python_quotes
-    autocmd!
-    autocmd FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
-  augroup END
-endfunction
-
-function! AleConfig()
-  let g:ale_linters = {
-  \  'go': ['gopls'],
-  \  'c': ['gcc'],
-  \  'cpp': ['gcc'],
-  \}
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_lint_on_enter = 0
-  let g:ale_sign_error = '>>'
-  let g:ale_sign_warning = '--'
-  let g:ale_echo_msg_error_str = 'Error'
-  let g:ale_echo_msg_warning_str = 'Warn'
-  let g:ale_echo_msg_format = '[%linter% %severity%] %s'
-  let g:ale_c_clang_options = "-Wno-everything"
-  let g:ale_cpp_clang_options = "-Wno-everything"
-  let g:ale_c_gcc_options = "-I `gcc -print-file-name=plugin`/include"
-  let g:ale_cpp_gcc_options = "-I `gcc -print-file-name=plugin`/include"
-
-  nnoremap <Leader>ta :ALEToggle<CR>
-endfunction
-
-function! TagbarConfig()
-  nnoremap <Leader>tt :TagbarToggle<CR>
 endfunction
 
 function! SolarizedConfig()
@@ -436,35 +408,18 @@ function! AirlineConfig()
   let g:airline#extensions#branch#vcs_checks = ['untracked']
 endfunction
 
-function! SuperTab()
-  let g:SuperTabMappingForward = '<s-tab>'
-  let g:SuperTabMappingBackward = '<tab>'
-endfunction
-
-function! VimLSC()
-  let g:lsc_auto_map = v:true
-  let g:lsc_enable_autocomplete = v:true
-  let g:lsc_server_commands = {'dart': 'dart_language_server'}
-  let g:lsc_autocomplete_length = 1
-  autocmd CompleteDone * silent! pclose
-endfunction
-
-call YouCompleteMeConfig()
+call CocConfig()
 call FzfConfig()
-call NERDCommenterConfig()
-call EasyMotionConfig()
-call BetterWhiteSpaceConfig()
-call AutoFormatConfig()
-call EasyAlignConfig()
 call DelimitMateConfig()
-call AleConfig()
-call TagbarConfig()
+call EasyMotionConfig()
+call NERDCommenterConfig()
+call BetterWhiteSpaceConfig()
+call EasyAlignConfig()
+call AutoFormatConfig()
 call SolarizedConfig()
 call RainbowParenthesesConfig()
 call NERDTreeConfig()
 call AirlineConfig()
-call SuperTab()
-call VimLSC()
 
 "-------------------------------------------------------------
 " Customized
