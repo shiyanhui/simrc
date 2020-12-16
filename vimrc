@@ -132,6 +132,9 @@ let &t_SI.="\e[6 q"
 let &t_SR.="\e[2 q"
 let &t_EI.="\e[2 q"
 
+" solarized or gruvbox
+let g:config_colorscheme = "gruvbox"
+
 "-------------------------------------------------------------
 " KeyMaps
 "-------------------------------------------------------------
@@ -235,6 +238,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
 call plug#begin('~/.vim/bundle')
 
 " Efficiency
@@ -250,7 +254,12 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 
 " Display
-Plug 'lifepillar/vim-solarized8'
+if g:config_colorscheme ==# 'solarized'
+  Plug 'lifepillar/vim-solarized8'
+elseif g:config_colorscheme ==# 'gruvbox'
+  Plug 'morhetz/gruvbox'
+endif
+
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
@@ -350,10 +359,14 @@ function! AutoFormatConfig()
   let g:formatter_yapf_style = 'pep8'
 endfunction
 
-function! SolarizedConfig()
-  silent! colorscheme solarized8
-  let g:solarized_visibility = 'normal'
-  let g:solarized_diffmode = 'normal'
+function! ColorschemeConfig()
+  if g:config_colorscheme ==# "solarized"
+    silent! colorscheme solarized8
+    let g:solarized_visibility = 'normal'
+    let g:solarized_diffmode = 'normal'
+  elseif g:config_colorscheme ==# "gruvbox"
+    silent! colorscheme gruvbox
+  endif
 
   highlight LineNr ctermbg=NONE guibg=NONE
   highlight SignColumn ctermbg=NONE guibg=NONE
@@ -402,10 +415,15 @@ endfunction
 
 function! AirlineConfig()
   let g:airline_powerline_fonts = 1
-  let g:airline_solarized_bg = 'dark'
-  let g:airline_theme = 'solarized'
   let g:airline_skip_empty_sections = 1
   let g:airline#extensions#branch#vcs_checks = ['untracked']
+
+  if g:config_colorscheme ==# 'solarized'
+    let g:airline_theme = 'solarized'
+    let g:airline_solarized_bg = 'dark'
+  elseif g:config_colorscheme ==# 'gruvbox'
+    let g:airline_theme = 'base16_gruvbox_dark_hard'
+  endif
 endfunction
 
 call CocConfig()
@@ -416,7 +434,7 @@ call NERDCommenterConfig()
 call BetterWhiteSpaceConfig()
 call EasyAlignConfig()
 call AutoFormatConfig()
-call SolarizedConfig()
+call ColorschemeConfig()
 call RainbowParenthesesConfig()
 call NERDTreeConfig()
 call AirlineConfig()
