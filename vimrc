@@ -132,8 +132,8 @@ let &t_SI.="\e[6 q"
 let &t_SR.="\e[2 q"
 let &t_EI.="\e[2 q"
 
-" solarized or gruvbox
-let g:config_colorscheme = "gruvbox"
+" solarized, gruvbox, elly
+let g:config_colorscheme = "elly"
 
 "-------------------------------------------------------------
 " KeyMaps
@@ -258,6 +258,8 @@ if g:config_colorscheme ==# 'solarized'
   Plug 'lifepillar/vim-solarized8'
 elseif g:config_colorscheme ==# 'gruvbox'
   Plug 'morhetz/gruvbox'
+elseif g:config_colorscheme ==# 'elly'
+  Plug 'shiyanhui/elly.vim'
 endif
 
 Plug 'kien/rainbow_parentheses.vim'
@@ -366,6 +368,8 @@ function! ColorschemeConfig()
     let g:solarized_diffmode = 'normal'
   elseif g:config_colorscheme ==# "gruvbox"
     silent! colorscheme gruvbox
+  elseif g:config_colorscheme ==# "elly"
+    silent! colorscheme elly
   endif
 
   highlight LineNr ctermbg=NONE guibg=NONE
@@ -423,6 +427,8 @@ function! AirlineConfig()
     let g:airline_solarized_bg = 'dark'
   elseif g:config_colorscheme ==# 'gruvbox'
     let g:airline_theme = 'base16_gruvbox_dark_hard'
+  elseif g:config_colorscheme ==# 'elly'
+    let g:airline_theme = 'elly'
   endif
 endfunction
 
