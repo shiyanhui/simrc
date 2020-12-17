@@ -132,8 +132,8 @@ let &t_SI.="\e[6 q"
 let &t_SR.="\e[2 q"
 let &t_EI.="\e[2 q"
 
-" solarized, gruvbox, elly
-let g:config_colorscheme = "elly"
+" solarized, gruvbox, elly, oceanicnext, srcery
+let g:colorscheme = "elly"
 
 "-------------------------------------------------------------
 " KeyMaps
@@ -254,12 +254,16 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 
 " Display
-if g:config_colorscheme ==# 'solarized'
+if g:colorscheme ==# 'solarized'
   Plug 'lifepillar/vim-solarized8'
-elseif g:config_colorscheme ==# 'gruvbox'
+elseif g:colorscheme ==# 'gruvbox'
   Plug 'morhetz/gruvbox'
-elseif g:config_colorscheme ==# 'elly'
+elseif g:colorscheme ==# 'elly'
   Plug 'shiyanhui/elly.vim'
+elseif g:colorscheme ==# 'oceanicnext'
+  Plug 'mhartington/oceanic-next'
+elseif g:colorscheme ==# 'srcery'
+  Plug 'srcery-colors/srcery-vim'
 endif
 
 Plug 'kien/rainbow_parentheses.vim'
@@ -362,14 +366,23 @@ function! AutoFormatConfig()
 endfunction
 
 function! ColorschemeConfig()
-  if g:config_colorscheme ==# "solarized"
-    silent! colorscheme solarized8
+  if g:colorscheme ==# "solarized"
     let g:solarized_visibility = 'normal'
     let g:solarized_diffmode = 'normal'
-  elseif g:config_colorscheme ==# "gruvbox"
+    silent! colorscheme solarized8
+    highlight VertSplit guifg=#002b36
+  elseif g:colorscheme ==# "gruvbox"
     silent! colorscheme gruvbox
-  elseif g:config_colorscheme ==# "elly"
+    highlight VertSplit guifg=#282828
+  elseif g:colorscheme ==# "elly"
     silent! colorscheme elly
+    highlight VertSplit guifg=#111a1f
+  elseif g:colorscheme ==# "oceanicnext"
+    silent! colorscheme OceanicNext
+    highlight VertSplit guifg=#1b2b34
+  elseif g:colorscheme ==# "srcery"
+    silent! colorscheme srcery
+    highlight VertSplit guifg=#1c1b19
   endif
 
   highlight LineNr ctermbg=NONE guibg=NONE
@@ -422,13 +435,17 @@ function! AirlineConfig()
   let g:airline_skip_empty_sections = 1
   let g:airline#extensions#branch#vcs_checks = ['untracked']
 
-  if g:config_colorscheme ==# 'solarized'
+  if g:colorscheme ==# 'solarized'
     let g:airline_theme = 'solarized'
     let g:airline_solarized_bg = 'dark'
-  elseif g:config_colorscheme ==# 'gruvbox'
+  elseif g:colorscheme ==# 'gruvbox'
     let g:airline_theme = 'base16_gruvbox_dark_hard'
-  elseif g:config_colorscheme ==# 'elly'
+  elseif g:colorscheme ==# 'elly'
     let g:airline_theme = 'elly'
+  elseif g:colorscheme ==# "oceanicnext"
+    let g:airline_theme = 'oceanicnext'
+  elseif g:colorscheme ==# "srcery"
+    let g:airline_theme = 'srcery'
   endif
 endfunction
 
