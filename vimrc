@@ -2,11 +2,11 @@
 " Options
 "-------------------------------------------------------------
 
-" 1 important
+" important
 set nocompatible
 set nopaste
 
-" 2 moving around, searching and patterns
+" moving around, searching and patterns
 set startofline
 set incsearch
 set magic
@@ -14,9 +14,7 @@ set ignorecase
 set smartcase
 set regexpengine=1
 
-" 3 tags
-
-" 4 displaying text
+" displaying text
 set scrolloff=8
 set sidescrolloff=10
 set fillchars=vert:│,fold:·
@@ -25,7 +23,7 @@ set nowrap
 set numberwidth=1
 set lazyredraw
 
-" 5 syntax, highlighting and spelling
+" syntax, highlighting and spelling
 syntax on
 set background=dark
 set hlsearch
@@ -38,38 +36,34 @@ if has("termguicolors")
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-" 6 multiple windows
+" multiple windows
 set laststatus=2
 set hidden
 
-" 7 multiple tab pages
-
-" 8 terminal
+" terminal
 set term=xterm-256color
 set ttyfast
 
-" 9 using the mouse
+" using the mouse
 set mouse-=a
 
-" 10 printing
-
-" 11 messages and info
+" messages and info
 set shortmess=atIq
 set showcmd
 set showmode
 set ruler
 set report=0
 
-" 12 selecting text
+" selecting text
 set clipboard=unnamed
 
-" 13 editing text
+" editing text
 set undolevels=1024
 set noundofile
 set backspace=indent,eol,start
 set matchpairs=(:),{:},[:]
 
-" 14 tabs and indenting
+" tabs and indenting
 set tabstop=2
 set shiftwidth=2
 set smarttab
@@ -79,13 +73,10 @@ set expandtab
 set autoindent
 set smartindent
 
-" 15 folding
+" folding
 set foldcolumn=1
 
-" 16 diff mode
-" 17 mapping
-
-" 18 reading and writing files
+" reading and writing files
 set write
 set nowritebackup
 set nobackup
@@ -94,23 +85,19 @@ set nowriteany
 set autoread
 set fsync
 
-" 19 the swap file
+" the swap file
 set noswapfile
 
-" 20 command line editing
+" command line editing
 set history=1024
 set wildignore=*.o,*.obj,*.swp,*.pyc,*.bak,*.tmp
 set wildmenu
 
-" 21 executing external commands
-" 22 running make and jumping to errors
-" 23 language specific
-
-" 24 multi-byte characters
+" multi-byte characters
 set encoding=utf-8
 set ambiwidth=single
 
-" 25 various
+" various
 set loadplugins
 set viminfo='64,\"128,:64,%,n~/.viminfo
 
@@ -178,21 +165,6 @@ nnoremap H ^
 nnoremap L $
 nnoremap U <C-r>
 nnoremap <Leader>/ :nohls<CR>
-
-let g:location_list_window_open = 0
-function! LocationListWindonwToggle() abort
-  if g:location_list_window_open == 0
-    silent! lopen
-    let g:location_list_window_open = 1
-  else
-    silent! lclose
-    let g:location_list_window_open = 0
-  endif
-endfunction
-
-nnoremap <Leader>tl :call LocationListWindonwToggle()<CR>
-nnoremap <Leader>jj :lnext<CR>
-nnoremap <Leader>kk :lpre<CR>
 
 "-------------------------------------------------------------
 " Events
@@ -273,11 +245,12 @@ Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/v
 " Languages
 Plug 'shiyanhui/vim-slash', {'for': ['c', 'cpp']}
 
-" load extra plugins
+" Load extra plugins
 call LoadFile($HOME.'/.vimrc.plugs')
 
 call plug#end()
 
+" Plugin configures
 function! CocConfig()
   function! s:check_back_space() abort
     let col = col('.') - 1
