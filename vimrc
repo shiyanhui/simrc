@@ -363,6 +363,7 @@ function! ColorschemeConfig()
   highlight FoldColumn ctermbg=NONE guibg=NONE
   highlight VertSplit ctermbg=NONE guibg=NONE
   highlight Comment gui=NONE cterm=NONE
+  highlight Normal guibg=NONE ctermbg=NONE
 endfunction
 
 function! RainbowParenthesesConfig()
