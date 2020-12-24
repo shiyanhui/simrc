@@ -367,6 +367,10 @@ function! ColorschemeConfig()
   highlight Normal guibg=NONE ctermbg=NONE
 endfunction
 
+function! VimPolyglotConfig()
+  let g:python_highlight_space_errors = 0
+endfunction
+
 function! RainbowParenthesesConfig()
   let g:rbpt_max = 16
   let g:rbpt_loadcmd_toggle = 0
@@ -433,6 +437,7 @@ call BetterWhiteSpaceConfig()
 call EasyAlignConfig()
 call AutoFormatConfig()
 call ColorschemeConfig()
+call VimPolyglotConfig()
 call RainbowParenthesesConfig()
 call NERDTreeConfig()
 call AirlineConfig()
