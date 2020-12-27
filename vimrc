@@ -119,7 +119,7 @@ let &t_SI.="\e[6 q"
 let &t_SR.="\e[2 q"
 let &t_EI.="\e[2 q"
 
-" solarized, gruvbox, elly, srcery, space-vim
+" solarized, gruvbox, srcery
 let g:colorscheme = "solarized"
 
 "-------------------------------------------------------------
@@ -230,12 +230,8 @@ if g:colorscheme ==# 'solarized'
   Plug 'lifepillar/vim-solarized8'
 elseif g:colorscheme ==# 'gruvbox'
   Plug 'morhetz/gruvbox'
-elseif g:colorscheme ==# 'elly'
-  Plug 'shiyanhui/elly.vim'
 elseif g:colorscheme ==# 'srcery'
   Plug 'srcery-colors/srcery-vim'
-elseif g:colorscheme ==# 'space-vim'
-  Plug 'liuchengxu/space-vim-dark'
 endif
 
 Plug 'sheerun/vim-polyglot'
@@ -341,22 +337,14 @@ endfunction
 
 function! ColorschemeConfig()
   if g:colorscheme ==# "solarized"
-    let g:solarized_visibility = 'normal'
-    let g:solarized_diffmode = 'normal'
     silent! colorscheme solarized8
     highlight VertSplit guifg=#002b36
   elseif g:colorscheme ==# "gruvbox"
     silent! colorscheme gruvbox
     highlight VertSplit guifg=#282828
-  elseif g:colorscheme ==# "elly"
-    silent! colorscheme elly
-    highlight VertSplit guifg=#111a1f
   elseif g:colorscheme ==# "srcery"
     silent! colorscheme srcery
     highlight VertSplit guifg=#1c1b19
-  elseif g:colorscheme ==# "space-vim"
-    silent! colorscheme space-vim-dark
-    highlight VertSplit guifg=#292b2e
   endif
 
   highlight LineNr ctermbg=NONE guibg=NONE
@@ -419,12 +407,8 @@ function! AirlineConfig()
     let g:airline_solarized_bg = 'dark'
   elseif g:colorscheme ==# 'gruvbox'
     let g:airline_theme = 'base16_gruvbox_dark_hard'
-  elseif g:colorscheme ==# 'elly'
-    let g:airline_theme = 'elly'
   elseif g:colorscheme ==# 'srcery'
     let g:airline_theme = 'srcery'
-  elseif g:colorscheme ==# 'space-vim'
-    let g:airline_theme = 'violet'
   endif
 endfunction
 
