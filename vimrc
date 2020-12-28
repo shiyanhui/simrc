@@ -100,6 +100,7 @@ set ambiwidth=single
 " various
 set loadplugins
 set viminfo='64,\"128,:64,%,n~/.viminfo
+set signcolumn=yes
 
 " terms options
 set t_vb=
@@ -344,12 +345,13 @@ function! ColorschemeConfig()
     silent! colorscheme srcery
   endif
 
-  highlight LineNr ctermbg=NONE guibg=NONE
-  highlight SignColumn ctermbg=NONE guibg=NONE
-  highlight FoldColumn ctermbg=NONE guibg=NONE
-  highlight VertSplit ctermbg=NONE guibg=NONE
-  highlight Comment gui=NONE cterm=NONE
-  highlight Normal guibg=NONE ctermbg=NONE
+  highlight! Normal      ctermbg=NONE guibg=NONE
+  highlight! VertSplit   ctermbg=NONE guibg=NONE
+  highlight! LineNr      ctermbg=NONE guibg=NONE
+  highlight! SignColumn  ctermbg=NONE guibg=NONE
+  highlight! FoldColumn  ctermbg=NONE guibg=NONE
+  highlight! Comment     cterm=NONE gui=NONE
+  highlight! EndOfBuffer ctermfg=black ctermbg=NONE
 endfunction
 
 function! VimPolyglotConfig()
@@ -392,6 +394,11 @@ function! NERDTreeConfig()
   let g:NERDTreeCascadeSingleChildDir = 0
   let g:NERDTreeSortHiddenFirst = 1
   let g:NERDTreeAutoDeleteBuffer = 1
+
+  augroup nerdtree
+    autocmd!
+    autocmd FileType nerdtree setlocal signcolumn=no
+  augroup END
 endfunction
 
 function! AirlineConfig()
