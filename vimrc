@@ -18,7 +18,7 @@ set regexpengine=1
 set scrolloff=8
 set sidescrolloff=10
 set fillchars=vert:\ ,fold:·
-set number
+set nonumber
 set nowrap
 set numberwidth=1
 set lazyredraw
