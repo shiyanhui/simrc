@@ -17,7 +17,7 @@ set regexpengine=1
 " displaying text
 set scrolloff=8
 set sidescrolloff=10
-set fillchars=vert:│,fold:·
+set fillchars=vert:\ ,fold:·
 set number
 set nowrap
 set numberwidth=1
@@ -338,13 +338,10 @@ endfunction
 function! ColorschemeConfig()
   if g:colorscheme ==# "solarized"
     silent! colorscheme solarized8
-    highlight VertSplit guifg=#002b36
   elseif g:colorscheme ==# "gruvbox"
     silent! colorscheme gruvbox
-    highlight VertSplit guifg=#282828
   elseif g:colorscheme ==# "srcery"
     silent! colorscheme srcery
-    highlight VertSplit guifg=#1c1b19
   endif
 
   highlight LineNr ctermbg=NONE guibg=NONE
