@@ -120,7 +120,7 @@ let &t_SI.="\e[6 q"
 let &t_SR.="\e[2 q"
 let &t_EI.="\e[2 q"
 
-" solarized, gruvbox, srcery
+" solarized, srcery
 let g:colorscheme = "solarized"
 
 "-------------------------------------------------------------
@@ -229,8 +229,6 @@ Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 " Display
 if g:colorscheme ==# 'solarized'
   Plug 'lifepillar/vim-solarized8'
-elseif g:colorscheme ==# 'gruvbox'
-  Plug 'morhetz/gruvbox'
 elseif g:colorscheme ==# 'srcery'
   Plug 'srcery-colors/srcery-vim'
 endif
@@ -339,8 +337,6 @@ endfunction
 function! ColorschemeConfig()
   if g:colorscheme ==# "solarized"
     silent! colorscheme solarized8
-  elseif g:colorscheme ==# "gruvbox"
-    silent! colorscheme gruvbox
   elseif g:colorscheme ==# "srcery"
     silent! colorscheme srcery
   endif
@@ -409,8 +405,6 @@ function! AirlineConfig()
   if g:colorscheme ==# 'solarized'
     let g:airline_theme = 'solarized'
     let g:airline_solarized_bg = 'dark'
-  elseif g:colorscheme ==# 'gruvbox'
-    let g:airline_theme = 'base16_gruvbox_dark_hard'
   elseif g:colorscheme ==# 'srcery'
     let g:airline_theme = 'srcery'
   endif
