@@ -17,7 +17,7 @@ set regexpengine=1
 " displaying text
 set scrolloff=8
 set sidescrolloff=10
-set fillchars=vert:\ ,fold:·
+set fillchars=vert:·,fold:·
 set nonumber
 set nowrap
 set numberwidth=1
@@ -100,7 +100,7 @@ set ambiwidth=single
 " various
 set loadplugins
 set viminfo='64,\"128,:64,%,n~/.viminfo
-set signcolumn=yes
+set signcolumn=no
 
 " terms options
 set t_vb=
@@ -337,6 +337,7 @@ endfunction
 function! ColorschemeConfig()
   if g:colorscheme ==# "solarized"
     silent! colorscheme solarized8
+    highlight! VertSplit guifg=#839496
   elseif g:colorscheme ==# "srcery"
     silent! colorscheme srcery
   endif
@@ -408,6 +409,14 @@ function! AirlineConfig()
   elseif g:colorscheme ==# 'srcery'
     let g:airline_theme = 'srcery'
   endif
+
+  function! AirlineInit()
+    let sect = g:airline_section_a
+    let g:airline_section_a = g:airline_section_z
+    let g:airline_section_z = sect
+  endfunction
+  autocmd User AirlineAfterInit call AirlineInit()
+
 endfunction
 
 call CocConfig()
