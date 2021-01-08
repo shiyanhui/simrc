@@ -133,6 +133,7 @@ filetype plugin indent on
 " Key Maps
 nnoremap <Leader>w <Esc>:w<CR>
 nnoremap <Leader>q <Esc>:q<CR>
+nnoremap <Leader>/ :nohls<CR>
 
 inoremap <C-a> <Esc><S-i>
 nnoremap <C-a> <Esc><S-i>
@@ -165,7 +166,6 @@ nnoremap ; :!
 nnoremap H ^
 nnoremap L $
 nnoremap U <C-r>
-nnoremap <Leader>/ :nohls<CR>
 
 "-------------------------------------------------------------
 " Events
@@ -237,6 +237,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/tagbar'
 
 " Languages
 Plug 'shiyanhui/vim-slash', {'for': ['c', 'cpp']}
@@ -419,6 +420,15 @@ function! AirlineConfig()
 
 endfunction
 
+function! TagbarConfig()
+  let g:tagbar_width = winwidth(0) / 2
+  let g:tagbar_show_data_type = 1
+  let g:tagbar_show_tag_linenumbers = 1
+  let g:tagbar_sort = 0
+  let g:tagbar_foldlevel = 99
+  nmap <Leader>t :TagbarToggle<CR>
+endfunction
+
 call CocConfig()
 call FzfConfig()
 call DelimitMateConfig()
@@ -432,6 +442,7 @@ call VimPolyglotConfig()
 call RainbowParenthesesConfig()
 call NERDTreeConfig()
 call AirlineConfig()
+call TagbarConfig()
 
 "-------------------------------------------------------------
 " Customized
