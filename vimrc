@@ -17,7 +17,7 @@ set regexpengine=1
 " displaying text
 set scrolloff=8
 set sidescrolloff=10
-set fillchars=vert:·,fold:·
+set fillchars=vert:\ ,fold:·
 set nonumber
 set nowrap
 set numberwidth=1
@@ -100,7 +100,7 @@ set ambiwidth=single
 " various
 set loadplugins
 set viminfo='64,\"128,:64,%,n~/.viminfo
-set signcolumn=no
+set signcolumn=yes
 
 " terms options
 set t_vb=
@@ -237,7 +237,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-Plug 'preservim/tagbar'
+Plug 'liuchengxu/vista.vim'
 
 " Languages
 Plug 'shiyanhui/vim-slash', {'for': ['c', 'cpp']}
@@ -416,17 +416,23 @@ function! AirlineConfig()
     let g:airline_section_a = g:airline_section_z
     let g:airline_section_z = sect
   endfunction
-  autocmd User AirlineAfterInit call AirlineInit()
 
+  autocmd User AirlineAfterInit call AirlineInit()
 endfunction
 
-function! TagbarConfig()
-  let g:tagbar_width = winwidth(0) / 2
-  let g:tagbar_show_data_type = 1
-  let g:tagbar_show_tag_linenumbers = 1
-  let g:tagbar_sort = 0
-  let g:tagbar_foldlevel = 99
-  nmap <Leader>t :TagbarToggle<CR>
+function! VistaConfig()
+  let g:vista_default_executive = 'ctags'
+  let g:vista_executive_for = {
+    \   'go': 'coc',
+    \   'dart': 'coc',
+    \   'python': 'coc',
+    \ }
+  let g:vista_sidebar_width = winwidth(0) / 3
+  let g:vista_cursor_delay = 10
+  let g:vista_echo_cursor_strategy = 'scroll'
+  let g:vista#renderer#enable_icon = 1
+
+  nmap <Leader>t :Vista!!<CR>
 endfunction
 
 call CocConfig()
@@ -442,7 +448,7 @@ call VimPolyglotConfig()
 call RainbowParenthesesConfig()
 call NERDTreeConfig()
 call AirlineConfig()
-call TagbarConfig()
+call VistaConfig()
 
 "-------------------------------------------------------------
 " Customized
