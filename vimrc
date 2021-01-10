@@ -17,7 +17,7 @@ set regexpengine=1
 " displaying text
 set scrolloff=8
 set sidescrolloff=10
-set fillchars=vert:\ ,fold:·
+set fillchars=vert:∘,fold:·
 set nonumber
 set nowrap
 set numberwidth=1
@@ -72,6 +72,8 @@ set shiftround
 set expandtab
 set autoindent
 set smartindent
+let g:python_recommended_style = 0
+let g:rust_recommended_style = 0
 
 " folding
 set foldcolumn=1
@@ -100,7 +102,7 @@ set ambiwidth=single
 " various
 set loadplugins
 set viminfo='64,\"128,:64,%,n~/.viminfo
-set signcolumn=yes
+set signcolumn=auto
 
 " terms options
 set t_vb=
@@ -218,7 +220,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ntpeters/vim-better-whitespace'
@@ -290,13 +292,8 @@ function! FzfConfig()
   let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 endfunction
 
-function! DelimitMateConfig()
-  let g:delimitMate_expand_cr = 1
-
-  augroup python_quotes
-    autocmd!
-    autocmd FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
-  augroup END
+function! AutoPairsConfig()
+  let g:AutoPairsCenterLine = 0
 endfunction
 
 function! EasyMotionConfig()
@@ -340,20 +337,27 @@ function! ColorschemeConfig()
     silent! colorscheme solarized8
     highlight! VertSplit guifg=#839496
   elseif g:colorscheme ==# "srcery"
+    let g:srcery_transparent_background = 1
     silent! colorscheme srcery
   endif
 
-  highlight! Normal      ctermbg=NONE guibg=NONE
-  highlight! VertSplit   ctermbg=NONE guibg=NONE
-  highlight! LineNr      ctermbg=NONE guibg=NONE
-  highlight! SignColumn  ctermbg=NONE guibg=NONE
-  highlight! FoldColumn  ctermbg=NONE guibg=NONE
-  highlight! Comment     cterm=NONE gui=NONE
-  highlight! EndOfBuffer ctermfg=black ctermbg=NONE
+  highlight! Normal       ctermbg=NONE guibg=NONE
+  highlight! VertSplit    ctermbg=NONE guibg=NONE
+  highlight! LineNr       ctermbg=NONE guibg=NONE
+  highlight! SignColumn   ctermbg=NONE guibg=NONE
+  highlight! FoldColumn   ctermbg=NONE guibg=NONE
+  highlight! Comment      cterm=NONE gui=NONE
+  highlight! EndOfBuffer  ctermfg=black ctermbg=NONE
+  highlight! StatusLineNC cterm=NONE ctermbg=NONE guibg=NONE
 endfunction
 
 function! VimPolyglotConfig()
   let g:python_highlight_space_errors = 0
+
+  augroup polyglot
+    autocmd!
+    autocmd FileType dart setlocal cinoptions=j1,J1,(1s,u1s,U1,m1,+1s
+  augroup END
 endfunction
 
 function! RainbowParenthesesConfig()
@@ -392,6 +396,7 @@ function! NERDTreeConfig()
   let g:NERDTreeCascadeSingleChildDir = 0
   let g:NERDTreeSortHiddenFirst = 1
   let g:NERDTreeAutoDeleteBuffer = 1
+  let g:NERDTreeStatusline = '%#NonText#'
 
   augroup nerdtree
     autocmd!
@@ -403,6 +408,7 @@ function! AirlineConfig()
   let g:airline_powerline_fonts = 1
   let g:airline_skip_empty_sections = 1
   let g:airline#extensions#branch#vcs_checks = ['untracked']
+  let g:airline#extensions#default#layout = [['z', 'b', 'c'], ['x', 'y', 'a', 'error', 'warning']]
 
   if g:colorscheme ==# 'solarized'
     let g:airline_theme = 'solarized'
@@ -411,13 +417,16 @@ function! AirlineConfig()
     let g:airline_theme = 'srcery'
   endif
 
-  function! AirlineInit()
-    let sect = g:airline_section_a
-    let g:airline_section_a = g:airline_section_z
-    let g:airline_section_z = sect
+  function! TransparentSectionC()
+    highlight! airline_c ctermbg=NONE guibg=NONE
+    highlight! airline_c_bold ctermbg=NONE guibg=NONE
+    highlight! airline_z_to_airline_c ctermbg=NONE guibg=NONE
+    highlight! airline_b_to_airline_c ctermbg=NONE guibg=NONE
+    highlight! airline_c_to_airline_x ctermbg=NONE guibg=NONE
   endfunction
 
-  autocmd User AirlineAfterInit call AirlineInit()
+  autocmd! User AirlineAfterTheme call TransparentSectionC()
+  autocmd! User AirlineModeChanged call TransparentSectionC()
 endfunction
 
 function! VistaConfig()
@@ -437,7 +446,7 @@ endfunction
 
 call CocConfig()
 call FzfConfig()
-call DelimitMateConfig()
+call AutoPairsConfig()
 call EasyMotionConfig()
 call NERDCommenterConfig()
 call BetterWhiteSpaceConfig()
