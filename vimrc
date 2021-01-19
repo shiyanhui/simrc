@@ -251,6 +251,8 @@ call plug#end()
 
 " Plugin configures
 function! CocConfig()
+  let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-go', 'coc-pyright', 'coc-rls']
+
   function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
