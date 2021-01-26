@@ -113,9 +113,12 @@ set visualbell
 set scrolljump=5
 
 " gui options
-set guifont=Hasklig:h14
-set guioptions=
-set guicursor+=a:blinkon0
+if has("gui_running")
+  set guifont=UbuntuMonoLigaturizedNerdFontComplete-Regular:h16
+  set guioptions=
+  set guicursor+=a:blinkon0
+  set transparency=5
+endif
 
 " change cursor shapes in different modes
 let &t_SI.="\e[6 q"
