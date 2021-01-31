@@ -341,10 +341,15 @@ function! ColorschemeConfig()
   if g:colorscheme ==# "solarized"
     silent! colorscheme solarized8
     highlight! VertSplit guifg=#839496
+    highlight! Statement cterm=italic gui=italic
+    highlight! Todo      cterm=italic,bold gui=italic
   elseif g:colorscheme ==# "srcery"
     let g:srcery_transparent_background = 1
     silent! colorscheme srcery
+    highlight! SrceryRed         cterm=italic gui=italic
+    highlight! SrceryMagentaBold cterm=italic,bold gui=italic
     highlight! link Search Cursor
+    highlight! link Todo SrceryMagentaBold
   endif
 
   highlight! Normal       ctermbg=NONE guibg=NONE
