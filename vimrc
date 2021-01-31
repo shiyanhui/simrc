@@ -254,7 +254,7 @@ call plug#end()
 
 " Plugin configures
 function! CocConfig()
-  let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-go', 'coc-pyright', 'coc-rls']
+  let g:coc_global_extensions = ['coc-json', 'coc-go']
 
   function! s:check_back_space() abort
     let col = col('.') - 1
@@ -344,6 +344,7 @@ function! ColorschemeConfig()
   elseif g:colorscheme ==# "srcery"
     let g:srcery_transparent_background = 1
     silent! colorscheme srcery
+    highlight! link Search Cursor
   endif
 
   highlight! Normal       ctermbg=NONE guibg=NONE
