@@ -408,6 +408,8 @@ function! NERDTreeConfig()
   let g:NERDTreeSortHiddenFirst = 1
   let g:NERDTreeAutoDeleteBuffer = 1
   let g:NERDTreeStatusline = '%#NonText#'
+  let g:NERDTreeDirArrowExpandable = "❯"
+  let g:NERDTreeDirArrowCollapsible = "❮"
 
   augroup nerdtree
     autocmd!
