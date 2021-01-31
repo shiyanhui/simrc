@@ -341,15 +341,15 @@ function! ColorschemeConfig()
   if g:colorscheme ==# "solarized"
     silent! colorscheme solarized8
     highlight! VertSplit guifg=#839496
-    highlight! Statement cterm=italic gui=italic
-    highlight! Todo      cterm=italic,bold gui=italic
+    highlight! Statement cterm=italic,bold gui=italic,bold
+    highlight! Todo      cterm=italic,bold gui=italic,bold
   elseif g:colorscheme ==# "srcery"
     let g:srcery_transparent_background = 1
     silent! colorscheme srcery
-    highlight! SrceryRed         cterm=italic gui=italic
+    highlight! SrceryRed         cterm=italic,bold gui=italic
     highlight! SrceryMagentaBold cterm=italic,bold gui=italic
-    highlight! link Search Cursor
     highlight! link Todo SrceryMagentaBold
+    highlight! link Search Cursor
   endif
 
   highlight! Normal       ctermbg=NONE guibg=NONE
@@ -357,9 +357,9 @@ function! ColorschemeConfig()
   highlight! LineNr       ctermbg=NONE guibg=NONE
   highlight! SignColumn   ctermbg=NONE guibg=NONE
   highlight! FoldColumn   ctermbg=NONE guibg=NONE
-  highlight! Comment      cterm=NONE gui=NONE
   highlight! EndOfBuffer  ctermfg=black ctermbg=NONE
   highlight! StatusLineNC cterm=NONE ctermbg=NONE guibg=NONE
+  highlight! Comment      cterm=NONE gui=NONE
 endfunction
 
 function! VimPolyglotConfig()
