@@ -342,6 +342,7 @@ function! ColorschemeConfig()
     highlight! Statement cterm=italic,bold gui=italic,bold
     highlight! Todo      cterm=italic,bold gui=italic,bold
   elseif g:colorscheme ==# "srcery"
+    let g:srcery_inverse_match_paren = 1
     let g:srcery_transparent_background = 1
     silent! colorscheme srcery
     highlight! SrceryRed         cterm=italic,bold gui=italic
@@ -401,7 +402,6 @@ endfunction
 
 function! NERDTreeConfig()
   nnoremap <Leader><Tab> :NERDTreeToggle<CR>
-  let g:NERDTreeMinimalUI = 1
   let g:NERDTreeIgnore = ['\.pyc$', '\.o$', '\.so$', '\.a$']
   let g:NERDTreeCascadeSingleChildDir = 0
   let g:NERDTreeSortHiddenFirst = 1
@@ -413,6 +413,7 @@ function! NERDTreeConfig()
   augroup nerdtree
     autocmd!
     autocmd FileType nerdtree setlocal signcolumn=no
+    autocmd FileType nerdtree setlocal conceallevel=3 | syntax match NERDTreeDirSlash #/$# containedin=NERDTreeDir conceal contained
   augroup END
 endfunction
 
