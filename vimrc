@@ -140,6 +140,13 @@ nnoremap <Leader>w <Esc>:w<CR>
 nnoremap <Leader>q <Esc>:q<CR>
 nnoremap <Leader>/ :nohls<CR>
 
+vnoremap > >gv
+vnoremap < <gv
+xnoremap p pgvy
+nnoremap ; :!
+nnoremap H ^
+nnoremap L $
+
 inoremap <C-a> <Esc><S-i>
 nnoremap <C-a> <Esc><S-i>
 cnoremap <C-a> <Home>
@@ -162,15 +169,6 @@ inoremap <C-o> <Esc>o
 "Conflict with fzf, so we disable it here.
 "nnoremap <C-j> O
 inoremap <C-j> <Esc>O
-
-vnoremap > >gv
-vnoremap < <gv
-xnoremap p pgvy
-
-nnoremap ; :!
-nnoremap H ^
-nnoremap L $
-nnoremap U <C-r>
 
 "-------------------------------------------------------------
 " Events
@@ -403,6 +401,7 @@ endfunction
 
 function! NERDTreeConfig()
   nnoremap <Leader><Tab> :NERDTreeToggle<CR>
+  let g:NERDTreeMinimalUI = 1
   let g:NERDTreeIgnore = ['\.pyc$', '\.o$', '\.so$', '\.a$']
   let g:NERDTreeCascadeSingleChildDir = 0
   let g:NERDTreeSortHiddenFirst = 1

@@ -14,19 +14,30 @@ curl -fLo ~/.vimrc https://raw.githubusercontent.com/shiyanhui/simrc/master/vimr
 
 ## Key maps
 
-```vim
-" below is a part of the key mappping settings.
+| Key       | Alias     | Description                                         |
+|:----------|:----------|:----------------------------------------------------|
+| ,w        | :w        | Save current file.                                  |
+| ,q        | :q        | Quit vim.                                           |
+| ,/        | :nohls    | Clear search highlight.                             |
+| ;         | :!        | Run shell command.                                  |
+| >         | >gv       | Shift indent right.                                 |
+| <         | <gv       | Shift indent left.                                  |
+| p         | pgvy      | Paste.                                              |
+| H         | ^         | Jump to head of line in normal mode.                |
+| L         | $         | Jump to end of line in normal mode.                 |
+| \<CTRL\>a | \<S-i\>   | Jump to head of line and enter insert mode.         |
+| \<CTRL\>e | \<S-a\>   | Jump to end of line and enter insert mode.          |
+| \<CTRL\>f | \<Right\> | Move forward.                                       |
+| \<CTRL\>b | \<Left\>  | Move backward.                                      |
+| \<CTRL\>t | \<C-o\>   | Jump back to last position.                         |
+| \<CTRL\>o | o         | Begin a new line below the cursor and insert text.  |
+| \<CTRL\>j | O         | Begin a new line above the cursor and insert text.  |
 
-let mapleader = ','     " mapleader
-<Leader>w               " save file
-<Leader>q               " quit
-<C-a>                   " jump to head of line
-<C-e>                   " jump to tail of line
-<C-f>                   " move forward
-<C-b>                   " move backward
->                       " continued right shift
-<                       " continued left shift
-<Leader>/               " unhighlight
+## Extra Settings
+
+```vim
+" Set colorscheme, currently only support `solarized` and `srcery`. Default is `solarized`.
+let g:colorscheme = "solarized"
 ```
 
 ## Uninstall
@@ -37,4 +48,4 @@ rm -rf ~/.vimrc ~/.vim
 
 ## License
 
-NO LICENSE. Do what you want with it :)
+MIT.
