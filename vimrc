@@ -345,8 +345,9 @@ function! ColorschemeConfig()
     let g:srcery_inverse_match_paren = 1
     let g:srcery_transparent_background = 1
     silent! colorscheme srcery
-    highlight! SrceryRed         cterm=italic,bold gui=italic
-    highlight! SrceryMagentaBold cterm=italic,bold gui=italic
+    highlight! SrceryRed           cterm=italic,bold gui=italic
+    highlight! SrceryBrightMagenta cterm=italic gui=italic
+    highlight! SrceryMagentaBold   cterm=italic,bold gui=italic
     highlight! link Todo SrceryMagentaBold
     highlight! link Search Cursor
   endif
