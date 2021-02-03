@@ -244,6 +244,7 @@ Plug 'liuchengxu/vista.vim'
 
 " Languages
 Plug 'shiyanhui/vim-slash', {'for': ['c', 'cpp']}
+Plug 'shiyanhui/vim-go', {'for': 'go'}
 
 " Load extra plugins
 call LoadFile($HOME.'/.vimrc.plugs')
@@ -458,6 +459,15 @@ function! VistaConfig()
   nmap <Leader>t :Vista!!<CR>
 endfunction
 
+function! VimGoConfig()
+  let g:go_highlight_types = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_function_calls = 1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_generate_tags = 1
+endfunction
+
 call CocConfig()
 call FzfConfig()
 call AutoPairsConfig()
@@ -472,6 +482,7 @@ call RainbowParenthesesConfig()
 call NERDTreeConfig()
 call AirlineConfig()
 call VistaConfig()
+call VimGoConfig()
 
 "-------------------------------------------------------------
 " Customized
