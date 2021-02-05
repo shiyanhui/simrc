@@ -342,6 +342,7 @@ function! ColorschemeConfig()
     highlight! VertSplit guifg=#839496
     highlight! Statement cterm=italic,bold gui=italic,bold
     highlight! Todo      cterm=italic,bold gui=italic,bold
+    highlight! Directory cterm=bold gui=bold
   elseif g:colorscheme ==# "srcery"
     let g:srcery_inverse_match_paren = 1
     let g:srcery_transparent_background = 1
@@ -351,6 +352,7 @@ function! ColorschemeConfig()
     highlight! SrceryMagentaBold   cterm=italic,bold gui=italic
     highlight! link Todo SrceryMagentaBold
     highlight! link Search Cursor
+    highlight! NERDTreeDir cterm=bold gui=bold ctermfg=4 guifg=#2C78BF
   endif
 
   highlight! Normal       ctermbg=NONE guibg=NONE
