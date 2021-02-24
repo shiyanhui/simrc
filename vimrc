@@ -166,8 +166,7 @@ nnoremap <C-t> <C-o>
 nnoremap <C-o> o
 inoremap <C-o> <Esc>o
 
-"Conflict with fzf, so we disable it here.
-"nnoremap <C-j> O
+nnoremap <C-j> O
 inoremap <C-j> <Esc>O
 
 "-------------------------------------------------------------
@@ -340,9 +339,8 @@ function! ColorschemeConfig()
   if g:colorscheme ==# "solarized"
     silent! colorscheme solarized8
     highlight! VertSplit guifg=#839496
-    highlight! Statement cterm=italic,bold gui=italic,bold
+    highlight! Directory cterm=bold
     highlight! Todo      cterm=italic,bold gui=italic,bold
-    highlight! Directory cterm=bold gui=bold
   elseif g:colorscheme ==# "srcery"
     let g:srcery_inverse_match_paren = 1
     let g:srcery_transparent_background = 1
