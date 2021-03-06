@@ -126,7 +126,7 @@ let &t_SR.="\e[2 q"
 let &t_EI.="\e[2 q"
 
 " solarized, srcery
-let g:colorscheme = "solarized"
+let g:colorscheme = "srcery"
 
 "-------------------------------------------------------------
 " KeyMaps
@@ -136,10 +136,11 @@ let mapleader = ','
 filetype plugin indent on
 
 " Key Maps
-nnoremap <Leader>w <Esc>:w<CR>
-nnoremap <Leader>q <Esc>:q<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
 nnoremap <Leader>/ :nohls<CR>
 
+nnoremap U :redo<CR>
 vnoremap > >gv
 vnoremap < <gv
 xnoremap p pgvy
