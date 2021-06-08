@@ -126,7 +126,7 @@ let &t_SR.="\e[2 q"
 let &t_EI.="\e[2 q"
 
 " solarized, srcery
-let g:colorscheme = "srcery"
+let g:colorscheme = "solarized"
 
 "-------------------------------------------------------------
 " KeyMaps
@@ -253,7 +253,7 @@ call plug#end()
 
 " Plugin configures
 function! CocConfig()
-  let g:coc_global_extensions = ['coc-json', 'coc-go']
+  let g:coc_global_extensions = ['coc-json', 'coc-clangd', 'coc-go']
 
   function! s:check_back_space() abort
     let col = col('.') - 1
