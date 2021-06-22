@@ -253,7 +253,7 @@ call plug#end()
 
 " Plugin configures
 function! CocConfig()
-  let g:coc_global_extensions = ['coc-json', 'coc-clangd', 'coc-go']
+  let g:coc_global_extensions = ['coc-json', 'coc-go', 'coc-clangd', 'coc-java']
 
   function! s:check_back_space() abort
     let col = col('.') - 1
@@ -405,7 +405,7 @@ endfunction
 
 function! NERDTreeConfig()
   nnoremap <Leader><Tab> :NERDTreeToggle<CR>
-  let g:NERDTreeIgnore = ['\.pyc$', '\.o$', '\.so$', '\.a$']
+  let g:NERDTreeIgnore = ['\.pyc$', '\.o$', '\.so$', '\.a$', '\.class$']
   let g:NERDTreeCascadeSingleChildDir = 0
   let g:NERDTreeSortHiddenFirst = 1
   let g:NERDTreeAutoDeleteBuffer = 1
