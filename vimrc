@@ -191,6 +191,11 @@ augroup set_syntax
   autocmd BufNewFile,BufRead *.h,*.c setfiletype c
 augroup END
 
+augroup set_tab
+  autocmd!
+  autocmd FileType java,python setlocal tabstop=4 shiftwidth=4 softtabstop=4
+augroup END
+
 augroup highlight_overlength
   autocmd!
   autocmd BufEnter * highlight OverLength ctermbg=15 guibg=#ffffff
@@ -412,6 +417,7 @@ function! NERDTreeConfig()
   let g:NERDTreeStatusline = '%#NonText#'
   let g:NERDTreeDirArrowExpandable = "❯"
   let g:NERDTreeDirArrowCollapsible = "❮"
+  let g:NERDTreeWinSize=50
 
   augroup nerdtree
     autocmd!
