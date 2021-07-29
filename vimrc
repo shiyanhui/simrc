@@ -299,6 +299,7 @@ function! FzfConfig()
   let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
   let g:fzf_tags_command = 'ctags -R'
   let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+  command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 endfunction
 
 function! AutoPairsConfig()
