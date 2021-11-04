@@ -193,13 +193,18 @@ augroup END
 
 augroup set_tab
   autocmd!
-  autocmd FileType java,python setlocal tabstop=4 shiftwidth=4 softtabstop=4
+  " autocmd FileType java,python setlocal tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
 
 augroup highlight_overlength
   autocmd!
   autocmd BufEnter * highlight OverLength ctermbg=15 guibg=#ffffff
   autocmd BufEnter,BufWrite,TextChanged,TextChangedI,InsertEnter,InsertLeave * match OverLength /\%<82v.\%>81v/
+augroup END
+
+augroup alias_command
+  autocmd!
+  autocmd FileType java :command! OrderImports CocCommand java.action.organizeImports
 augroup END
 
 "-------------------------------------------------------------
