@@ -17,7 +17,8 @@ set regexpengine=1
 " displaying text
 set scrolloff=8
 set sidescrolloff=10
-set fillchars=vert:∘,fold:·
+" set fillchars=vert:∘,fold:·
+set fillchars=vert:\ ,fold:·
 set nonumber
 set nowrap
 set numberwidth=1
@@ -205,6 +206,7 @@ augroup END
 augroup alias_command
   autocmd!
   autocmd FileType java :command! OrderImports CocCommand java.action.organizeImports
+  autocmd FileType java :command! OI CocCommand java.action.organizeImports
 augroup END
 
 "-------------------------------------------------------------
