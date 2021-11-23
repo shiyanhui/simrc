@@ -90,6 +90,7 @@ set fsync
 
 " the swap file
 set noswapfile
+set updatetime=300
 
 " command line editing
 set history=1024
@@ -201,6 +202,7 @@ augroup highlight_overlength
   autocmd!
   autocmd BufEnter * highlight OverLength ctermbg=15 guibg=#ffffff
   autocmd BufEnter,BufWrite,TextChanged,TextChangedI,InsertEnter,InsertLeave * match OverLength /\%<82v.\%>81v/
+  autocmd BufEnter,BufWrite,TextChanged,TextChangedI,InsertEnter,InsertLeave *.java match OverLength /\%<152v.\%>151v/
 augroup END
 
 augroup alias_command
@@ -353,7 +355,7 @@ function! ColorschemeConfig()
   if g:colorscheme ==# "solarized"
     silent! colorscheme solarized8
     highlight! VertSplit guifg=#839496
-    highlight! Directory cterm=bold
+    highlight! Directory cterm=bold gui=bold
     highlight! Todo      cterm=italic,bold gui=italic,bold
   elseif g:colorscheme ==# "srcery"
     let g:srcery_inverse_match_paren = 1
