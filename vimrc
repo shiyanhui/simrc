@@ -310,7 +310,7 @@ function! FzfConfig()
   let g:fzf_tags_command = 'ctags -R'
   let g:fzf_commands_expect = 'alt-enter,ctrl-x'
   command! -bang -nargs=* Ag call fzf#vim#ag(
-    \ <q-args>, extend({'options': '--delimiter : --nth 4..'}, fzf#vim#with_preview()), <bang>0)
+    \ <q-args>, {'options': extend(get(fzf#vim#with_preview(), 'options', []), ['--delimiter', ':', '--nth', '4..'])}, <bang>0)
 endfunction
 
 function! AutoPairsConfig()
