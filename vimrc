@@ -191,6 +191,7 @@ augroup END
 augroup set_syntax
   autocmd!
   autocmd BufNewFile,BufRead *.h,*.c setfiletype c
+  autocmd BufNewFile,BufRead *.pp setfiletype json
 augroup END
 
 augroup set_tab
