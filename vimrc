@@ -258,6 +258,7 @@ Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/v
 Plug 'liuchengxu/vista.vim'
 
 " Languages
+Plug 'rust-lang/rust.vim'
 Plug 'shiyanhui/vim-slash', {'for': ['c', 'cpp']}
 Plug 'shiyanhui/vim-go', {'for': 'go'}
 
@@ -268,7 +269,7 @@ call plug#end()
 
 " Plugin configures
 function! CocConfig()
-  let g:coc_global_extensions = ['coc-json', 'coc-go', 'coc-clangd', 'coc-java']
+  let g:coc_global_extensions = ['coc-json', 'coc-go', 'coc-clangd', 'coc-java', 'coc-rust-analyzer']
 
   function! s:check_back_space() abort
     let col = col('.') - 1
@@ -395,6 +396,7 @@ function! ColorschemeConfig()
   highlight! EndOfBuffer  ctermfg=black ctermbg=NONE
   highlight! StatusLineNC cterm=NONE ctermbg=NONE guibg=NONE
   highlight! Comment      cterm=NONE gui=NONE
+  highlight! link CocInlayHint Comment
 endfunction
 
 function! VimPolyglotConfig()
