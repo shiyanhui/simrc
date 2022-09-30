@@ -314,6 +314,14 @@ function! CocConfig()
 
   " Choose action
   nmap <leader>ac  <Plug>(coc-codeaction)
+
+  " Scroll the floating window.
+  nnoremap <silent><nowait><expr> <C-N> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C>"
+  nnoremap <silent><nowait><expr> <C-P> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C>"
+  inoremap <silent><nowait><expr> <C-N> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<C>"
+  inoremap <silent><nowait><expr> <C-P> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<C>"
+  vnoremap <silent><nowait><expr> <C-N> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C>"
+  vnoremap <silent><nowait><expr> <C-P> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C>"
 endfunction
 
 function! FzfConfig()
@@ -447,7 +455,7 @@ function! NERDTreeConfig()
   let g:NERDTreeStatusline = '%#NonText#'
   let g:NERDTreeDirArrowExpandable = "❯"
   let g:NERDTreeDirArrowCollapsible = "❮"
-  let g:NERDTreeWinSize=50
+  let g:NERDTreeWinSize=60
 
   augroup nerdtree
     autocmd!
