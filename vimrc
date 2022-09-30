@@ -316,12 +316,12 @@ function! CocConfig()
   nmap <leader>ac  <Plug>(coc-codeaction)
 
   " Scroll the floating window.
-  nnoremap <silent><nowait><expr> <C-N> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C>"
-  nnoremap <silent><nowait><expr> <C-P> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C>"
-  inoremap <silent><nowait><expr> <C-N> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<C>"
-  inoremap <silent><nowait><expr> <C-P> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<C>"
-  vnoremap <silent><nowait><expr> <C-N> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C>"
-  vnoremap <silent><nowait><expr> <C-P> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C>"
+  nnoremap <silent><nowait><expr> <C-N> coc#float#has_scroll() ? coc#float#scroll(1) : ""
+  nnoremap <silent><nowait><expr> <C-P> coc#float#has_scroll() ? coc#float#scroll(0) : ""
+  inoremap <silent><nowait><expr> <C-N> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : ""
+  inoremap <silent><nowait><expr> <C-P> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : ""
+  vnoremap <silent><nowait><expr> <C-N> coc#float#has_scroll() ? coc#float#scroll(1) : ""
+  vnoremap <silent><nowait><expr> <C-P> coc#float#has_scroll() ? coc#float#scroll(0) : ""
 endfunction
 
 function! FzfConfig()
