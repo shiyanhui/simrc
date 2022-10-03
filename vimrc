@@ -42,7 +42,9 @@ set laststatus=2
 set hidden
 
 " terminal
-set term=xterm-256color
+if !has('nvim')
+  set term=xterm-256color
+endif
 set ttyfast
 
 " using the mouse
@@ -455,7 +457,7 @@ function! NERDTreeConfig()
   let g:NERDTreeStatusline = '%#NonText#'
   let g:NERDTreeDirArrowExpandable = "❯"
   let g:NERDTreeDirArrowCollapsible = "❮"
-  let g:NERDTreeWinSize=60
+  let g:NERDTreeWinSize=66
 
   augroup nerdtree
     autocmd!
